@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <!--<AddIn Type="Command">
+    <Text>Command NBSParameterSync</Text>
+    <Description>Some description for NBSParameterSync</Description>
+    <Assembly>NBSParameterSync.dll</Assembly>
+    <FullClassName>NBSParameterSync.Command</FullClassName>
+    <ClientId>d4927302-40ff-4165-9459-94d390d408f5</ClientId>
+    <VendorId>TBC_</VendorId>
+  </AddIn>-->
+  
+  <AddIn Type="Application">
+    <Name>NBSParameterSync</Name>
+    <Assembly>NBSParameterSync.dll</Assembly>
+    <ClientId>9E3123EC-CDAF-43BE-8542-88106B12C13B</ClientId>
+    <FullClassName>NBSParameterSync.App</FullClassName>
+    <VendorId>ARBG</VendorId>
+	<VisibilityMode>NotVisibleInFamily</VisibilityMode>
+	<VisibilityMode>NotVisibleWhenNoActiveDocument</VisibilityMode>
+  </AddIn>
+</RevitAddIns>
