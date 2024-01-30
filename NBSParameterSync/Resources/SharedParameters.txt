@@ -1,0 +1,14 @@
+# This is a Revit shared parameter file.
+# Do not edit manually.
+*META	VERSION	MINVERSION
+META	0	0
+*GROUP	ID	NAME
+GROUP	1	ObjectParameters
+GROUP	2	MaterialParameters
+*PARAM	GUID	NAME	DATATYPE	DATACATEGORY	GROUP	VISIBLE	DESCRIPTION	USERMODIFIABLE	HIDEWHENNOVALUE
+PARAM	8cbb36e4-83db-4c85-b24e-6d0f0362f6af	ManufacturerName	TEXT		1	1		1	0
+PARAM	3abb6113-6a66-4be1-bf5e-fc7ab310530f	ModelReference	TEXT		1	1		1	0
+PARAM	dc1cc7db-d9a7-4597-ab5d-526f1840eec6	ProductInformation	URL		1	1		1	0
+PARAM	715dedbc-b126-4ecd-9ac8-c438782dd8c2	ManufacturerName_mtrl	TEXT		2	1		1	0
+PARAM	79b9aaae-be62-4459-ac43-ca48a7a36c18	ModelReference_mtrl	TEXT		2	1		1	0
+PARAM	a18cb312-db3c-4f3c-a90a-53e2d443c15b	ProductInformation_mtrl	URL		2	1		1	0

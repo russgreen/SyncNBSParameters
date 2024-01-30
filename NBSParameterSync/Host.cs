@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NBSParameterSync.Services;
+using SyncNBSParameters.Services;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
 using System;
 
-namespace NBSParameterSync;
+namespace SyncNBSParameters;
 internal static class Host
 {
     private static IHost _host;
@@ -32,7 +32,7 @@ internal static class Host
             .UseSerilog()
             .ConfigureServices((_, services) =>
             {
-                services.AddSingleton<IService, Service>();
+                services.AddSingleton<ISettingsService, SettingsService>();
 
                 services.AddSingleton<AppDocEvents>();
             })

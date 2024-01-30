@@ -5,7 +5,7 @@ using Autodesk.Revit.UI.Events;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace NBSParameterSync;
+namespace SyncNBSParameters;
 internal class AppDocEvents
 {
 

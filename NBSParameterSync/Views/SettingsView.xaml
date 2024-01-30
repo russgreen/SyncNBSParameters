@@ -1,0 +1,140 @@
+﻿<Window x:Class="SyncNBSParameters.Views.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SyncNBSParameters.Views"
+        xmlns:viewModels="clr-namespace:SyncNBSParameters.ViewModels"    
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type viewModels:SettingsViewModel}, IsDesignTimeCreatable=True}"
+        Title="Settings" 
+        Width="800" Height="350" 
+        MinWidth="800" MinHeight="350"
+        FontSize="14" FontFamily="Segoe UI Light" 
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <viewModels:SettingsViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" 
+            FontFamily="Segoe UI Semibold"        
+            Text="NBS Chorus Parameter Name" />
+            <TextBlock Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2"
+            FontFamily="Segoe UI Semibold"       
+            Text="Shared parameter to sync data into"  />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                   FontFamily="Segoe UI Semibold"    
+                   Text="Family type parameters" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" 
+                    Text="NBSChorusManName" />
+            <TextBlock Grid.Row="2" Grid.Column="1"
+                   Text="{Binding ManNameParameter.Name}" />
+            <TextBlock Grid.Row="2" Grid.Column="2" Margin="0,0,5,5"
+                    Text="{Binding ManNameParameter.Guid}" />
+            <Button Grid.Row="2" Grid.Column="3" Margin="0,0,0,5"
+                    x:Name="buttonNBSChorusManName"
+                    Content="..." 
+                    Click="buttonNBSChorusManName_Click"  />
+
+            <TextBlock Grid.Row="3" Grid.Column="0"
+                    Text="NBSChorusProdRef" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,0,5,5"
+                    Text="{Binding ProdRefParameter.Name}" />
+            <TextBlock Grid.Row="3" Grid.Column="2" Margin="0,0,5,5"
+                    Text="{Binding ProdRefParameter.Guid}" />
+            <Button Grid.Row="3" Grid.Column="3" Margin="0,0,0,5"
+                    x:Name="buttonNBSChorusProdRef"
+                    Content="..." 
+                    Click="buttonNBSChorusProdRef_Click"  />
+
+            <TextBlock Grid.Row="4" Grid.Column="0"
+                    Text="NBSChorusManProdURL" />
+            <TextBlock Grid.Row="4" Grid.Column="1" Margin="0,0,5,5"
+                    Text="{Binding ManProdURLParameter.Name}" />
+            <TextBlock Grid.Row="4" Grid.Column="2" Margin="0,0,5,5"
+                    Text="{Binding ManProdURLParameter.Guid}" />
+            <Button Grid.Row="4" Grid.Column="3" Margin="0,0,0,5"
+                    x:Name="buttonNBSChorusManProdURL"
+                    Content="..." 
+                    Click="buttonNBSChorusManProdURL_Click"  />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                   FontFamily="Segoe UI Semibold"    
+                   Text="Materials parameters" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0"
+                    Text="NBSChorusManName_mtrl" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Margin="0,0,5,5"
+                    Text="{Binding ManNameMtrlParameter.Name}" />
+            <TextBlock Grid.Row="6" Grid.Column="2" Margin="0,0,5,5"
+                    Text="{Binding ManNameMtrlParameter.Guid}" />
+            <Button Grid.Row="6" Grid.Column="3" Margin="0,0,0,5"
+                    x:Name="buttonNBSChorusManName_mtrl"
+                    Content="..." 
+                    Click="buttonNBSChorusManName_mtrl_Click"  />
+
+            <TextBlock Grid.Row="7" Grid.Column="0"
+                    Text="NBSChorusProdRef_mtrl" />
+            <TextBlock Grid.Row="7" Grid.Column="1" Margin="0,0,5,5"
+                    Text="{Binding ProdRefMtrlParameter.Name}" />
+            <TextBlock Grid.Row="7" Grid.Column="2" Margin="0,0,5,5"
+                    Text="{Binding ProdRefMtrlParameter.Guid}" />
+            <Button Grid.Row="7" Grid.Column="3" Margin="0,0,0,5"
+                    x:Name="buttonNBSChorusProdRef_mtrl"
+                    Content="..." 
+                    Click="buttonNBSChorusProdRef_mtrl_Click"  />
+
+            <TextBlock Grid.Row="8" Grid.Column="0"
+                    Text="NBSChorusManProdURL_mtrl" />
+            <TextBlock Grid.Row="8" Grid.Column="1" Margin="0,0,5,5"
+                    Text="{Binding ManProdURLMtrlParameter.Name}" />
+            <TextBlock Grid.Row="8" Grid.Column="2" Margin="0,0,5,5"
+                    Text="{Binding ManProdURLMtrlParameter.Guid}" />
+            <Button Grid.Row="8" Grid.Column="3" Margin="0,0,0,5"
+                    x:Name="buttonNBSChorusManProdURL_mtrl"
+                    Content="..." 
+                    Click="buttonNBSChorusManProdURL_mtrl_Click"  />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                    Margin="0,6,0,1" Width="146" >
+            <Button Content="Save Settings" Padding="5,0,5,0" 
+                Command="{Binding SaveSettingsCommand}" />
+            <Button x:Name="buttonCancel"
+                Content="Cancel" Padding="5,0,5,0" Margin="5,0,0,0" 
+                IsCancel="True" 
+                Click="buttonCancel_Click" />
+        </StackPanel>
+    </Grid>
+
+</Window>

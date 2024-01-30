@@ -1,14 +1,13 @@
 ﻿using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Events;
 using Microsoft.Extensions.Logging;
-using NBSParameterSync.Commands;
 using Nice3point.Revit.Toolkit.External;
+using SyncNBSParameters.Commands;
 using System;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
-namespace NBSParameterSync;
+namespace SyncNBSParameters;
 public class App : ExternalApplication
 {
     // get the absolute path of this assembly
@@ -23,7 +22,7 @@ public class App : ExternalApplication
     public static Autodesk.Revit.DB.Document RevitDocument;
 
     private AppDocEvents _appEvents;
-    private readonly string _tabName = "NBSParameterSync";
+    private readonly string _tabName = "Sync NBS Parameters";
 
     private ILogger<App> _logger;
 
@@ -78,17 +77,26 @@ public class App : ExternalApplication
         }
         catch { }
 
-        RibbonPanel panel = CachedUiCtrApp.CreateRibbonPanel(_tabName, "NBSParameterSync_Panel");
-        panel.Title = "NBSParameterSync";
+        RibbonPanel panel = CachedUiCtrApp.CreateRibbonPanel(_tabName, "SyncNBSParameters_Panel");
+        panel.Title = "Sync Parameters";
 
-        PushButton button = (PushButton)panel.AddItem(
+        PushButton buttonSync = (PushButton)panel.AddItem(
             new PushButtonData(
-                "Command",
-                "Command",
+                "CommandParameterSync",
+                "Sync Parameters",
                 Assembly.GetExecutingAssembly().Location,
-                $"{nameof(NBSParameterSync)}.{nameof(Commands)}.{nameof(Command)}"));
-        button.ToolTip = "Execute the NBSParameterSync command";
-        button.LargeImage = PngImageSource("NBSParameterSync.Resources.NBSParameterSync_Button.png");
+                $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandParameterSync)}"));
+        buttonSync.ToolTip = "Sync parameter values";
+        buttonSync.LargeImage = PngImageSource("SyncNBSParameters.Resources.SyncData.png");
+
+        PushButton buttonSettings = (PushButton)panel.AddItem(
+    new PushButtonData(
+        "CommandSettings",
+        "Settings",
+        Assembly.GetExecutingAssembly().Location,
+        $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandSettings)}"));
+        buttonSettings.ToolTip = "Configure mapping settings";
+        buttonSettings.LargeImage = PngImageSource("SyncNBSParameters.Resources.Settings.png");
 
         return panel;
     }
