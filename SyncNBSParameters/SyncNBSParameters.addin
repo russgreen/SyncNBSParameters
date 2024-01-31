@@ -11,7 +11,7 @@
   
   <AddIn Type="Application">
     <Name>NBSParameterSync</Name>
-    <Assembly>NBSParameterSync.dll</Assembly>
+    <Assembly>.\SyncNBSParameters\SyncNBSParameters.dll</Assembly>
     <ClientId>9E3123EC-CDAF-43BE-8542-88106B12C13B</ClientId>
     <FullClassName>NBSParameterSync.App</FullClassName>
     <VendorId>ARBG</VendorId>

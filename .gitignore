@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Advanced Installer
+Installer/*.back.aip
+Installer/SyncNBSParameters-cache/*
+Installer/SyncNBSParameters-SetupFiles/*

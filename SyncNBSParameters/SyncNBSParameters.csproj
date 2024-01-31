@@ -76,7 +76,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+		<!--<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />-->
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />		
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="7.0.0" />
@@ -109,7 +109,7 @@
 		<ItemGroup>
 			<AddinManifest Include="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\SyncNBSParameters.addin" />
 		</ItemGroup>
-		<ReplaceFileText InputFilename="NBSParameterSync.addin" OutputFilename="@(AddinManifest)" MatchExpression="Assembly&gt;(.*?)&lt;" ReplacementText="Assembly&gt;$(TargetDir)$(AssemblyName).dll&lt;" />
+		<ReplaceFileText InputFilename="SyncNBSParameters.addin" OutputFilename="@(AddinManifest)" MatchExpression="Assembly&gt;(.*?)&lt;" ReplacementText="Assembly&gt;$(TargetDir)$(AssemblyName).dll&lt;" />
 		<ReplaceFileText InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="&lt;VendorId&gt;(.*?)&lt;" ReplacementText="&lt;VendorId&gt;$(PackageId)&lt;" />
 		<ReplaceFileText InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="&lt;FullClassName&gt;(.*?)&lt;" ReplacementText="&lt;FullClassName&gt;$(RootNamespace).App&lt;" />
 	</Target>
