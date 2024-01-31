@@ -32,9 +32,9 @@ internal static class Host
             .UseSerilog()
             .ConfigureServices((_, services) =>
             {
-                services.AddSingleton<ISettingsService, SettingsService>();
-
                 services.AddSingleton<AppDocEvents>();
+
+                services.AddTransient<ISettingsService, SettingsService>();
             })
             .Build();
 

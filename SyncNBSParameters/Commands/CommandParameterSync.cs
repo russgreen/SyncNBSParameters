@@ -24,16 +24,17 @@ public class CommandParameterSync : IExternalCommand
     {
         _logger.LogDebug("Command called");
 
-        _settingsService.GetSettings();
-
         if (commandData.Application.ActiveUIDocument.Document is null)
         {
             throw new ArgumentException("activedoc");
         }
         else
         {
+            App.CachedUiApp = commandData.Application;
             App.RevitDocument = commandData.Application.ActiveUIDocument.Document;
         }
+
+        _settingsService.GetSettings();
 
         var types = App.RevitDocument.GetTypes()
             .Where(x => x.HasNewChorusParameters(_settingsService.ObjectParameterGuids.Keys.ToList()));   

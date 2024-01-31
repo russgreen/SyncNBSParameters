@@ -31,8 +31,6 @@ internal class SettingsService : ISettingsService
 
     private readonly ILogger<SettingsService> _logger;
 
-    private Autodesk.Revit.DB.ProjectInfo _projectInfo = null;
-
     private Schema _schema = null;
 
     public SettingsModel Settings { get; set; }
@@ -65,8 +63,6 @@ internal class SettingsService : ISettingsService
 
     public bool GetSettings()
     {
-        _projectInfo = App.RevitDocument.ProjectInformation; 
-
         _schema = null;
 
         if (SchemaExists(_schemaName))
