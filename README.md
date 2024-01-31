@@ -1,8 +1,8 @@
-# NBSParameterSync
+# SyncNBSParameters
 
 NBS Chorus now syncs additional parameter values from NBC Chorus to Revit.  These parameters are listed here: https://support.thenbs.com/support/solutions/articles/7000043835
 
-The follow parameters are duplicates of data already contained in IFC parameters so the sync process will not overwrite / update the IFC parameters. This is not desirable as the data will be not be correct in tags and schedules that correctly reference other parameters on objects.
+The following parameters are duplicates of data already contained in IFC parameters so the sync process will not overwrite/update the IFC parameters. This is not desirable as the data will be incorrect in tags and schedules that correctly reference other parameters on objects.
 
 | Component object | Material object | Corresponding Chorus specification field |
 | :--- | :---: | :--- |
@@ -10,7 +10,7 @@ The follow parameters are duplicates of data already contained in IFC parameters
 | NBSChorusProdRef* [BE6F6DF3-763C-405A-9753-70306FF673D4]| NBSChorusProdRef_mtrl* [B1E5D0F4-44D8-4084-AFC7-4AE940E59B66]| The article or clause 'Product reference'. |
 | NBSChorusManProdURL* [E12E541C-B092-4439-B9A3-9F7D070BC4C3]| NBSChorusManProdURL_mtrl* [8E182EF2-EBA8-43DF-8387-86106BE35563]| The URL of the supplier's product listing in NBS Source or Archify. |
 
-The purpose of this addin is to allow users to sync values from these parameters into any other parameter in the project.  This is done by creating a mapping between the NBS parameter and the target parameter.  The mapping is stored in the project and can be edited at any time. Default settings are:
+The purpose of this addin is to allow users to sync values from these parameters into any other parameter in the project.  This is done by creating a mapping between the NBS parameter and the target parameter.  The mapping is stored in the project and can be edited anytime. Default settings are:
 
 | NBS Chorus Parameter | Target Sync Parameter |
 | :--- | :--- |
