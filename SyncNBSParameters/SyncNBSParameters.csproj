@@ -96,7 +96,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="NBSParameterSync.addin">
+		<None Update="SyncNBSParameters.addin">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\SharedParameters.txt">
@@ -107,7 +107,7 @@
 	<!-- Build debug manifest at build time -->
 	<Target Name="CreateAddinManifest" AfterTargets="AfterBuild">
 		<ItemGroup>
-			<AddinManifest Include="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\NBSParameterSync.addin" />
+			<AddinManifest Include="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\SyncNBSParameters.addin" />
 		</ItemGroup>
 		<ReplaceFileText InputFilename="NBSParameterSync.addin" OutputFilename="@(AddinManifest)" MatchExpression="Assembly&gt;(.*?)&lt;" ReplacementText="Assembly&gt;$(TargetDir)$(AssemblyName).dll&lt;" />
 		<ReplaceFileText InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="&lt;VendorId&gt;(.*?)&lt;" ReplacementText="&lt;VendorId&gt;$(PackageId)&lt;" />
@@ -116,7 +116,7 @@
 	
 	<!-- Clean up debug manifest -->
 	<Target Name="CleanupAddinManifest" AfterTargets="AfterClean">
-		<Delete Files="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\NBSParameterSync.addin" />
+		<Delete Files="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\SyncNBSParameters.addin" />
 	</Target>
 
 	<UsingTask Condition="'$(MSBuildRuntimeType)' == 'Full'" TaskName="ReplaceFileText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
