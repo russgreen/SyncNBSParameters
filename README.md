@@ -26,3 +26,5 @@ The purpose of this addin is to allow users to sync values from these parameters
 | NBSChorusManName_mtrl | ManufacturerName_mtrl [715dedbc-b126-4ecd-9ac8-c438782dd8c2] |
 | NBSChorusProdRef_mtrl | ModelReference_mtrl [79b9aaae-be62-4459-ac43-ca48a7a36c18] |
 | NBSChorusManProdURL_mtrl | ProductInformation_mtrl [a18cb312-db3c-4f3c-a90a-53e2d443c15b] |
+
+The addin will attempt to create the command buttons on the NBS ribbon tab.  The the NBS tab is not available the buttons can be found on the Add-Ins tab.
