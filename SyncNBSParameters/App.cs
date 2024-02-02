@@ -1,9 +1,11 @@
 ﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using Microsoft.Extensions.Logging;
 using Nice3point.Revit.Toolkit.External;
 using SyncNBSParameters.Commands;
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
@@ -21,8 +23,7 @@ public class App : ExternalApplication
     public static ControlledApplication CtrApp;
     public static Autodesk.Revit.DB.Document RevitDocument;
 
-    private AppDocEvents _appEvents;
-    private readonly string _tabName = "Sync NBS Parameters";
+    private readonly string _tabName = "NBS";
 
     private ILogger<App> _logger;
 
@@ -37,64 +38,51 @@ public class App : ExternalApplication
         _logger = Host.GetService<ILogger<App>>();
 
         var panel = RibbonPanel(CachedUiCtrApp);
-
-        AddAppDocEvents();
-
     }
 
     public Result OnShutdown(UIControlledApplication application)
     {
-        RemoveAppDocEvents();
-
         Host.StopHost();
         Serilog.Log.CloseAndFlush();
 
         return Result.Succeeded;
     }
 
-    #region Event Handling
-    private void AddAppDocEvents()
-    {
-        _appEvents = new AppDocEvents();
-        _appEvents.EnableEvents();
-    }
-    private void RemoveAppDocEvents()
-    {
-        _appEvents.DisableEvents();
-    }
-
-
-    #endregion
-
     #region Ribbon Panel
 
     private RibbonPanel RibbonPanel(UIControlledApplication application)
     {
+        RibbonPanel panel = null;
 
+        //try and put the panel in the NBS tab
         try
         {
-            CachedUiCtrApp.CreateRibbonTab(_tabName);
+            panel = CachedUiCtrApp.CreateRibbonPanel(_tabName, "SyncNBSParameters_Panel");
         }
-        catch { }
-
-        RibbonPanel panel = CachedUiCtrApp.CreateRibbonPanel(_tabName, "SyncNBSParameters_Panel");
+        catch 
+        {
+            panel = CachedUiCtrApp.CreateRibbonPanel(Tab.AddIns, "SyncNBSParameters_Panel");
+        }
+         
         panel.Title = "Sync Parameters";
 
-        PushButton buttonSync = (PushButton)panel.AddItem(
-            new PushButtonData(
-                "CommandParameterSync",
-                "Sync Parameters",
-                Assembly.GetExecutingAssembly().Location,
-                $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandParameterSync)}"));
+        var splitButtonData = new SplitButtonData("SyncNBSParametersSplit", "Sync Parameters");
+        var splitButton = panel.AddItem(splitButtonData) as SplitButton;
+        splitButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "https://github.com/russgreen/SyncNBSParameters"));
+
+        var buttonSync = splitButton.AddPushButton(new PushButtonData(
+                       "CommandParameterSync",
+                       "Sync Parameters",
+                       ExecutingAssemblyPath,
+                       $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandParameterSync)}"));
         buttonSync.ToolTip = "Sync parameter values";
         buttonSync.LargeImage = PngImageSource("SyncNBSParameters.Resources.SyncData.png");
-
-        PushButton buttonSettings = (PushButton)panel.AddItem(
-    new PushButtonData(
-        "CommandSettings",
-        "Settings",
-        Assembly.GetExecutingAssembly().Location,
-        $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandSettings)}"));
+        
+        var buttonSettings = splitButton.AddPushButton(new PushButtonData(
+            "CommandSettings",
+            "Settings",
+            ExecutingAssemblyPath,
+            $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandSettings)}"));
         buttonSettings.ToolTip = "Configure mapping settings";
         buttonSettings.LargeImage = PngImageSource("SyncNBSParameters.Resources.Settings.png");
 
@@ -117,5 +105,6 @@ public class App : ExternalApplication
 
         return imageSource;
     }
+
     #endregion
 }
