@@ -3,7 +3,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue.svg)
 ![.NET](https://img.shields.io/badge/.NET-4.8-blue.svg)
 
-![GitHub last commit](https://img.shields.io/github/last-commit/russgreen/transmittal) 
+![GitHub last commit](https://img.shields.io/github/last-commit/russgreen/syncnbsparameters) 
 
 
 NBS Chorus now syncs additional parameter values to Revit.  These parameters are listed here: https://support.thenbs.com/support/solutions/articles/7000043835
