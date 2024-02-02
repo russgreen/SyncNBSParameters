@@ -1,6 +1,6 @@
 # SyncNBSParameters
 
-NBS Chorus now syncs additional parameter values from NBC Chorus to Revit.  These parameters are listed here: https://support.thenbs.com/support/solutions/articles/7000043835
+NBS Chorus now syncs additional parameter values to Revit.  These parameters are listed here: https://support.thenbs.com/support/solutions/articles/7000043835
 
 The following parameters are duplicates of data already contained in IFC parameters so the sync process will not overwrite/update the IFC parameters. This is not desirable as the data will be incorrect in tags and schedules that correctly reference other parameters on objects.
 
