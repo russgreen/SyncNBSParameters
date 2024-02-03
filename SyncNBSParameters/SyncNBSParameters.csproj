@@ -71,7 +71,7 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-	  <None Remove="Resources\Settings.png" />
+	  <None Remove="Resources\Hyperlink.png" />
 	  <None Remove="Resources\SyncData.png" />
 	</ItemGroup>
 	
@@ -92,6 +92,11 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Resources\SyncData.png" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Resource Include="Resources\Hyperlink.png" />
 	</ItemGroup>
 
 	<ItemGroup>
