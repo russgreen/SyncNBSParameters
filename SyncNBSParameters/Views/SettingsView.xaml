@@ -23,106 +23,130 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
-                <ColumnDefinition Width="200" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" 
-            FontFamily="Segoe UI Semibold"        
-            Text="NBS Chorus Parameter Name" />
-            <TextBlock Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2"
-            FontFamily="Segoe UI Semibold"       
-            Text="Shared parameter to sync data into"  />
+            <GroupBox Grid.Column="0"
+                      Header="NBS Chorus Parameter Name">
+                <Grid Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                   FontFamily="Segoe UI Semibold"    
-                   Text="Family type parameters" />
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                       FontFamily="Segoe UI Semibold"    
+                       Text="Family type parameters" />
 
-            <TextBlock Grid.Row="2" Grid.Column="0" 
-                    Text="NBSChorusManName" />
-            <TextBlock Grid.Row="2" Grid.Column="1"
-                   Text="{Binding ManNameParameter.Name}" />
-            <TextBlock Grid.Row="2" Grid.Column="2" Margin="0,0,5,5"
-                    Text="{Binding ManNameParameter.Guid}" />
-            <Button Grid.Row="2" Grid.Column="3" Margin="0,0,0,5"
-                    x:Name="buttonNBSChorusManName"
-                    Content="..." 
-                    Click="buttonNBSChorusManName_Click"  />
+                    <TextBlock Grid.Row="1" Grid.Column="0" 
+                        Text="NBSChorusManName" />
 
-            <TextBlock Grid.Row="3" Grid.Column="0"
-                    Text="NBSChorusProdRef" />
-            <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,0,5,5"
-                    Text="{Binding ProdRefParameter.Name}" />
-            <TextBlock Grid.Row="3" Grid.Column="2" Margin="0,0,5,5"
-                    Text="{Binding ProdRefParameter.Guid}" />
-            <Button Grid.Row="3" Grid.Column="3" Margin="0,0,0,5"
-                    x:Name="buttonNBSChorusProdRef"
-                    Content="..." 
-                    Click="buttonNBSChorusProdRef_Click"  />
+                    <TextBlock Grid.Row="2" Grid.Column="0"
+                        Text="NBSChorusProdRef" />
 
-            <TextBlock Grid.Row="4" Grid.Column="0"
-                    Text="NBSChorusManProdURL" />
-            <TextBlock Grid.Row="4" Grid.Column="1" Margin="0,0,5,5"
-                    Text="{Binding ManProdURLParameter.Name}" />
-            <TextBlock Grid.Row="4" Grid.Column="2" Margin="0,0,5,5"
-                    Text="{Binding ManProdURLParameter.Guid}" />
-            <Button Grid.Row="4" Grid.Column="3" Margin="0,0,0,5"
-                    x:Name="buttonNBSChorusManProdURL"
-                    Content="..." 
-                    Click="buttonNBSChorusManProdURL_Click"  />
+                    <TextBlock Grid.Row="3" Grid.Column="0"
+                        Text="NBSChorusManProdURL" />
 
-            <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
-                   FontFamily="Segoe UI Semibold"    
-                   Text="Materials parameters" />
+                    <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                       FontFamily="Segoe UI Semibold"    
+                       Text="Materials parameters" />
 
-            <TextBlock Grid.Row="6" Grid.Column="0"
-                    Text="NBSChorusManName_mtrl" />
-            <TextBlock Grid.Row="6" Grid.Column="1" Margin="0,0,5,5"
-                    Text="{Binding ManNameMtrlParameter.Name}" />
-            <TextBlock Grid.Row="6" Grid.Column="2" Margin="0,0,5,5"
-                    Text="{Binding ManNameMtrlParameter.Guid}" />
-            <Button Grid.Row="6" Grid.Column="3" Margin="0,0,0,5"
-                    x:Name="buttonNBSChorusManName_mtrl"
-                    Content="..." 
-                    Click="buttonNBSChorusManName_mtrl_Click"  />
+                    <TextBlock Grid.Row="5" Grid.Column="0"
+                        Text="NBSChorusManName_mtrl" />
 
-            <TextBlock Grid.Row="7" Grid.Column="0"
-                    Text="NBSChorusProdRef_mtrl" />
-            <TextBlock Grid.Row="7" Grid.Column="1" Margin="0,0,5,5"
-                    Text="{Binding ProdRefMtrlParameter.Name}" />
-            <TextBlock Grid.Row="7" Grid.Column="2" Margin="0,0,5,5"
-                    Text="{Binding ProdRefMtrlParameter.Guid}" />
-            <Button Grid.Row="7" Grid.Column="3" Margin="0,0,0,5"
-                    x:Name="buttonNBSChorusProdRef_mtrl"
-                    Content="..." 
-                    Click="buttonNBSChorusProdRef_mtrl_Click"  />
+                    <TextBlock Grid.Row="6" Grid.Column="0"
+                        Text="NBSChorusProdRef_mtrl" />
 
-            <TextBlock Grid.Row="8" Grid.Column="0"
-                    Text="NBSChorusManProdURL_mtrl" />
-            <TextBlock Grid.Row="8" Grid.Column="1" Margin="0,0,5,5"
+                    <TextBlock Grid.Row="7" Grid.Column="0"
+                        Text="NBSChorusManProdURL_mtrl" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Margin="10,0,0,0"
+                      Header="Shared parameter to sync data into" >
+                <Grid Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                        Text="{Binding ManNameParameter.Name}" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,5,5"
+                        Text="{Binding ManNameParameter.Guid}" />
+                    <Button Grid.Row="1" Grid.Column="2" Margin="0,0,0,5"
+                        x:Name="buttonNBSChorusManName"
+                        Content="..." 
+                        Click="buttonNBSChorusManName_Click"  />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,5,5"
+                        Text="{Binding ProdRefParameter.Name}" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,0,5,5"
+                        Text="{Binding ProdRefParameter.Guid}" />
+                    <Button Grid.Row="2" Grid.Column="2" Margin="0,0,0,5"
+                        x:Name="buttonNBSChorusProdRef"
+                        Content="..." 
+                        Click="buttonNBSChorusProdRef_Click"  />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,5,5"
+                        Text="{Binding ManProdURLParameter.Name}" />
+                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,0,5,5"
+                        Text="{Binding ManProdURLParameter.Guid}" />
+                    <Button Grid.Row="3" Grid.Column="2" Margin="0,0,0,5"
+                        x:Name="buttonNBSChorusManProdURL"
+                        Content="..." 
+                        Click="buttonNBSChorusManProdURL_Click"  />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="0,0,5,5"
+                        Text="{Binding ManNameMtrlParameter.Name}" />
+                    <TextBlock Grid.Row="5" Grid.Column="1" Margin="0,0,5,5"
+                        Text="{Binding ManNameMtrlParameter.Guid}" />
+                    <Button Grid.Row="5" Grid.Column="2" Margin="0,0,0,5"
+                        x:Name="buttonNBSChorusManName_mtrl"
+                        Content="..." 
+                        Click="buttonNBSChorusManName_mtrl_Click"  />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Margin="0,0,5,5"
+                        Text="{Binding ProdRefMtrlParameter.Name}" />
+                    <TextBlock Grid.Row="6" Grid.Column="1" Margin="0,0,5,5"
+                        Text="{Binding ProdRefMtrlParameter.Guid}" />
+                    <Button Grid.Row="6" Grid.Column="2" Margin="0,0,0,5"
+                        x:Name="buttonNBSChorusProdRef_mtrl"
+                        Content="..." 
+                        Click="buttonNBSChorusProdRef_mtrl_Click"  />
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Margin="0,0,5,5"
                     Text="{Binding ManProdURLMtrlParameter.Name}" />
-            <TextBlock Grid.Row="8" Grid.Column="2" Margin="0,0,5,5"
+                    <TextBlock Grid.Row="7" Grid.Column="1" Margin="0,0,5,5"
                     Text="{Binding ManProdURLMtrlParameter.Guid}" />
-            <Button Grid.Row="8" Grid.Column="3" Margin="0,0,0,5"
+                    <Button Grid.Row="7" Grid.Column="2" Margin="0,0,0,5"
                     x:Name="buttonNBSChorusManProdURL_mtrl"
                     Content="..." 
                     Click="buttonNBSChorusManProdURL_mtrl_Click"  />
+                </Grid>
+                
+            </GroupBox>
+            
         </Grid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" 
