@@ -2,8 +2,10 @@
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using Microsoft.Extensions.Logging;
+using Nice3point.Revit.Extensions;
 using Nice3point.Revit.Toolkit.External;
 using SyncNBSParameters.Commands;
+using SyncNBSParameters.Controllers;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -68,6 +70,8 @@ public class App : ExternalApplication
 
         var splitButtonData = new SplitButtonData("SyncNBSParametersSplit", "Sync Parameters");
         var splitButton = panel.AddItem(splitButtonData) as SplitButton;
+        splitButton.IsSynchronizedWithCurrentItem = false;
+
         splitButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "https://github.com/russgreen/SyncNBSParameters"));
 
         var buttonSync = splitButton.AddPushButton(new PushButtonData(
@@ -77,14 +81,20 @@ public class App : ExternalApplication
                        $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandParameterSync)}"));
         buttonSync.ToolTip = "Sync parameter values";
         buttonSync.LargeImage = PngImageSource("SyncNBSParameters.Resources.SyncData.png");
-        
+        buttonSync.SetAvailabilityController<CommandAvailabilityProject>();
+
         var buttonSettings = splitButton.AddPushButton(new PushButtonData(
             "CommandSettings",
             "Settings",
             ExecutingAssemblyPath,
             $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandSettings)}"));
-        buttonSettings.ToolTip = "Configure mapping settings";
-        buttonSettings.LargeImage = PngImageSource("SyncNBSParameters.Resources.Settings.png");
+        buttonSettings.SetAvailabilityController<CommandAvailabilityProject>();
+
+        var buttonAbout = splitButton.AddPushButton(new PushButtonData(
+                       "CommandAbout",
+                       "About",
+                       ExecutingAssemblyPath,
+                       $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandAbout)}"));
 
         return panel;
     }

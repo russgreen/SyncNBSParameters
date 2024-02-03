@@ -91,7 +91,6 @@
 
 
 	<ItemGroup>
-		<EmbeddedResource Include="Resources\Settings.png" />
 		<EmbeddedResource Include="Resources\SyncData.png" />
 	</ItemGroup>
 
