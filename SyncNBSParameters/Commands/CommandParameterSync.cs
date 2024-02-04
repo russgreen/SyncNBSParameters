@@ -88,9 +88,15 @@ public class CommandParameterSync : IExternalCommand
         }
 
         TaskDialog.Show("Sync NBS Parameters", 
-            $"Synced {types.Count()} type(s) and {materials.Count()} material(s) with NBS Chorus parameters. {_elementsNotUpdated.Count()} could not be updated. This may be because the element is from the National BIM Library and contains some readonly parameters.");
+            $"Synced {types.Count()} type(s) and {materials.Count()} material(s) with NBS Chorus parameters. {_elementsNotUpdated.Distinct().Count()} could not be updated. This may be because the element is from the National BIM Library and contains some readonly parameters.");
 
         //TODO : show a list of elements that could not be updated
+        if(_elementsNotUpdated.Any())
+        {
+            var elementListView = new Views.ElementListView(_elementsNotUpdated.Distinct().ToList());
+            elementListView.Show();
+        }
+
 
         return Result.Succeeded;
     }

@@ -13,7 +13,7 @@ internal static class Host
 
     public static void StartHost()
     {
-        var logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "NBSParameterSync", "Log.json");
+        var logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "SyncNBSParameters", "Log.json");
 
 
         Log.Logger = new LoggerConfiguration()
@@ -32,6 +32,8 @@ internal static class Host
             .UseSerilog()
             .ConfigureServices((_, services) =>
             {
+                //services.AddSingleton<ISoftwareUpdateService, SoftwareUpdateService>();
+
                 services.AddTransient<ISettingsService, SettingsService>();
             })
             .Build();
