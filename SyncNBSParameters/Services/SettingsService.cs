@@ -48,16 +48,16 @@ internal class SettingsService : ISettingsService
 
         ObjectParameterGuids = new Dictionary<string, (string, string)>
         {
-            {"NBSChorusManName", ("911E28F9-12DD-40A8-B0D5-014F9522F86A", Settings.ManNameParameter.Guid) },
-            {"NBSChorusProdRef", ("BE6F6DF3-763C-405A-9753-70306FF673D4", Settings.ProdRefParameter.Guid) },
-            {"NBSChorusManProdURL", ("E12E541C-B092-4439-B9A3-9F7D070BC4C3", Settings.ManProdURLParameter.Guid) }
+            {nameof(Settings.NBSChorusManName), (Settings.NBSChorusManName, Settings.ManNameParameter.Guid) },
+            {nameof(Settings.NBSChorusProdRef), (Settings.NBSChorusProdRef, Settings.ProdRefParameter.Guid) },
+            {nameof(Settings.NBSChorusManProdURL), (Settings.NBSChorusManProdURL, Settings.ManProdURLParameter.Guid) }
         };
 
         MaterialParameterGuids = new Dictionary<string, (string, string)>
         {
-            {"NBSChorusManName_mtrl", ("69574448-B9B5-45D7-BC5F-38B193B320D7", Settings.ManNameMtrlParameter.Guid) },
-            {"NBSChorusProdRef_mtrl", ("B1E5D0F4-44D8-4084-AFC7-4AE940E59B66", Settings.ProdRefMtrlParameter.Guid) },
-            {"NBSChorusManProdURL_mtrl", ("8E182EF2-EBA8-43DF-8387-86106BE35563", Settings.ManProdURLMtrlParameter.Guid) }
+            {nameof(Settings.NBSChorusManName_mtrl), (Settings.NBSChorusManName_mtrl, Settings.ManNameMtrlParameter.Guid) },
+            {nameof(Settings.NBSChorusProdRef_mtrl), (Settings.NBSChorusProdRef_mtrl, Settings.ProdRefMtrlParameter.Guid) },
+            {nameof(Settings.NBSChorusManProdURL_mtrl), (Settings.NBSChorusManProdURL_mtrl, Settings.ManProdURLMtrlParameter.Guid) }
         };
     }
 
@@ -234,14 +234,6 @@ internal class SettingsService : ISettingsService
 
     private List<ElementId> ElementsWithStorage(Schema schema)
     {
-        //List<ElementId> ids = new List<ElementId>();
-
-        //FilteredElementCollector collector = new FilteredElementCollector(App.RevitDocument);
-        //collector.WherePasses(new ExtensibleStorageFilter(schema.GUID));
-        //ids.AddRange(collector.ToElementIds());
-
-        //return ids;
-
         return App.RevitDocument.GetElements()
             .WherePasses(new ExtensibleStorageFilter(schema.GUID))
             .Select(q => q.Id)
@@ -258,10 +250,6 @@ internal class SettingsService : ISettingsService
 
     private DataStorage FindDataStorageElement(Schema schema)
     {
-        //FilteredElementCollector collector = new FilteredElementCollector(App.RevitDocument);
-        //collector.OfClass(typeof(DataStorage));
-        //collector.WherePasses(new ExtensibleStorageFilter(schema.GUID));
-
         var collector = App.RevitDocument.GetElements()
             .OfClass(typeof(DataStorage))
             .WherePasses(new ExtensibleStorageFilter(schema.GUID));
