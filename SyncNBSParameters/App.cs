@@ -1,4 +1,4 @@
-﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using Microsoft.Extensions.Logging;
@@ -38,6 +38,8 @@ public class App : ExternalApplication
         Host.StartHost();
 
         _logger = Host.GetService<ILogger<App>>();
+
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("##SyncfusionLicense##");
 
         var panel = RibbonPanel(CachedUiCtrApp);
     }

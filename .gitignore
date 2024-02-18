@@ -362,6 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+# Syncfusion License Key 
+SyncfusionKey.txt
+BoldReportsKey.txt
+
 # Advanced Installer
 Installer/*.back.aip
 Installer/SyncNBSParameters-cache/*

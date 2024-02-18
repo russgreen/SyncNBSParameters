@@ -3,12 +3,16 @@
 	<PropertyGroup>
 		<Configurations>Debug R21;Debug R22;Debug R23;Debug R24;Debug R25</Configurations>
 		<Configurations>$(Configurations);Release R21;Release R22;Release R23;Release R24;Release R25</Configurations>
-		<Platforms>x64</Platforms>
 		<Description>Sync NBS Chorus additional parameter values into alternative parameters</Description>
 		<Copyright>Copyright © 2024 Russ Green. All rights Reserved</Copyright>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en</NeutralLanguage>
+		<Platforms>x64</Platforms>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
@@ -87,6 +91,7 @@
 		<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
 		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
 		<PackageReference Include="ricaun.Revit.UI.StatusBar" Version="1.0.0" />
+		<PackageReference Include="Syncfusion.SfGrid.WPF" Version="21.1.39" />
 	</ItemGroup>
 
 
@@ -107,6 +112,14 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="cd &quot;$(SolutionDir)&quot;&#xD;&#xA;SyncfusionLicenseRegister.bat PreBuild $(ProjectDir)App.cs $(SolutionDir)SyncfusionKey.txt" />
+	</Target>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="cd &quot;$(SolutionDir)&quot;&#xD;&#xA;SyncfusionLicenseRegister.bat PostBuild $(ProjectDir)App.cs $(SolutionDir)SyncfusionKey.txt" />
+	</Target>
 
 	<!-- Build debug manifest at build time -->
 	<Target Name="CreateAddinManifest" AfterTargets="AfterBuild">
