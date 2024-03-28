@@ -86,10 +86,10 @@
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="7.0.0" />
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-		<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-*" />
-		<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*-*" />
-		<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
-		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
+		<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-preview.*" />
+		<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*-preview.*" />
+		<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*-*" />
+		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*-*" />
 		<PackageReference Include="ricaun.Revit.UI.StatusBar" Version="1.0.0" />
 		<PackageReference Include="Syncfusion.SfGrid.WPF" Version="24.2.7" />
 	</ItemGroup>
