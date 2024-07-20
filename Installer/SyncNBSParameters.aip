@@ -9,10 +9,10 @@
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://github.com/russgreen/SyncNBSParameters"/>
     <ROW Property="Manufacturer" Value="Russ Green"/>
-    <ROW Property="ProductCode" Value="2057:{C2B80C83-3E36-4A8D-B6FF-48BE5CE62005} " Type="16"/>
+    <ROW Property="ProductCode" Value="2057:{575A6A99-9EE0-4693-8BAE-A2661300A807} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="SyncNBSParameters"/>
-    <ROW Property="ProductVersion" Value="1.1.1" Options="32"/>
+    <ROW Property="ProductVersion" Value="1.1.2" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{194A2B58-4B5C-4EAB-A868-83BAD9DB2BD7}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
