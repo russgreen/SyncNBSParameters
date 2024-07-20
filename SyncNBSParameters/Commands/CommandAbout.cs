@@ -1,19 +1,19 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using Nice3point.Revit.Toolkit;
+using Nice3point.Revit.Toolkit.External;
 
 namespace SyncNBSParameters.Commands;
 [Transaction(TransactionMode.Manual)]
-internal class CommandAbout : IExternalCommand
+internal class CommandAbout : ExternalCommand
 {
-    public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+    public override void Execute()
     {
-        App.CachedUiApp = commandData.Application;
-        App.RevitDocument = commandData.Application.ActiveUIDocument.Document;
+        App.CachedUiApp = Context.UiApplication;
+        App.RevitDocument = Context.Document;
 
         var newView = new Views.AboutView();
         newView.ShowDialog();
-
-        return Result.Succeeded;
     }
 }

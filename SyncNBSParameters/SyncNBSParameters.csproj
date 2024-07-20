@@ -74,22 +74,21 @@
 		<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*" />
 		<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*" />
 		<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
-		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).0.0" Condition="$(RevitVersion) == '2025'"/>
-		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" Condition="$(RevitVersion) &lt; '2025'"/>
+		<PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
 		<PackageReference Include="ricaun.Revit.UI.StatusBar" Version="1.0.0" />
 		<PackageReference Include="Syncfusion.SfGrid.WPF" Version="24.2.7" />
 
 		<!--IOC-->
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" />
-		<!--<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" Condition="$(RevitVersion) == '2025'"/>
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.*" Condition="$(RevitVersion) != '' And $(RevitVersion) &lt; '2025'"/>-->
+		<!--<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" />-->
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" Condition="'$(TargetFramework)' == 'net48'" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.*" Condition="'$(TargetFramework)' == 'net8.0-windows'" />
 
 		<!--Logging-->
-		<PackageReference Include="Serilog.Sinks.Debug" Version="2.*"/>
-		<PackageReference Include="Serilog.Sinks.File" Version="5.*"/>
-		<PackageReference Include="Serilog.Extensions.Hosting" Version="7.*" />
-		<!--<PackageReference Include="Serilog.Extensions.Hosting" Version="7.*" Condition="$(RevitVersion) == '2025'"/>
-		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.*" Condition="$(RevitVersion) != '' And $(RevitVersion) &lt; '2025'"/>-->
+		<PackageReference Include="Serilog.Sinks.Debug" Version="2.*" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.*" />
+		<!--<PackageReference Include="Serilog.Extensions.Hosting" Version="7.*" />-->
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="7.*" Condition="'$(TargetFramework)' == 'net48'" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.*" Condition="'$(TargetFramework)' == 'net8.0-windows'" />
 	</ItemGroup>
 
 
@@ -104,7 +103,7 @@
 
 	<ItemGroup>
 		<None Update="SyncNBSParameters.addin">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\SharedParameters.txt">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

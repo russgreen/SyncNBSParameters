@@ -9,21 +9,21 @@ using ricaun.Revit.UI.StatusBar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Nice3point.Revit.Toolkit.External;
+using Nice3point.Revit.Toolkit;
 
 namespace SyncNBSParameters.Commands;
 
 [Transaction(TransactionMode.Manual)]
-public class CommandParameterSync : IExternalCommand
+public class CommandParameterSync : ExternalCommand
 {
-    public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+    public override void Execute()
     {
-        App.CachedUiApp = commandData.Application;
-        App.RevitDocument = commandData.Application.ActiveUIDocument.Document;
+        App.CachedUiApp = Context.UiApplication;
+        App.RevitDocument = Context.Document;
 
         var newView = new Views.ParameterSyncView();
         newView.ShowDialog();
-
-        return Result.Succeeded;
     }
 
 }
