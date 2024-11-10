@@ -5,7 +5,7 @@
 		<Configurations>$(Configurations);Release R21;Release R22;Release R23;Release R24;Release R25</Configurations>
 		<Description>Sync NBS Chorus additional parameter values into alternative parameters</Description>
 		<Copyright>Copyright © 2024 Russ Green. All rights Reserved</Copyright>
-		<Version>1.1.3</Version>
+		<Version>1.1.4</Version>
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
@@ -78,14 +78,16 @@
 		<PackageReference Include="ricaun.Revit.UI.StatusBar" Version="1.0.0" />
 		<PackageReference Include="Syncfusion.SfGrid.WPF" Version="24.2.7" />
 
+		<PackageReference Include="System.Text.Json" Version="8.*" />
+
 		<!--IOC-->
 		<!--<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" />-->
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" Condition="'$(TargetFramework)' == 'net48'" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.*" Condition="'$(TargetFramework)' == 'net8.0-windows'" />
 
 		<!--Logging-->
-		<PackageReference Include="Serilog.Sinks.Debug" Version="2.*" />
-		<PackageReference Include="Serilog.Sinks.File" Version="5.*" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="3.*" />
+		<PackageReference Include="Serilog.Sinks.File" Version="6.*" />
 		<!--<PackageReference Include="Serilog.Extensions.Hosting" Version="7.*" />-->
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="7.*" Condition="'$(TargetFramework)' == 'net48'" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.*" Condition="'$(TargetFramework)' == 'net8.0-windows'" />
