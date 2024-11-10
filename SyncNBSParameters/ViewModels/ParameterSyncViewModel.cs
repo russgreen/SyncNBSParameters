@@ -102,21 +102,29 @@ internal partial class ParameterSyncViewModel : BaseViewModel
 
         foreach (var type in types)
         {
-            var dataModel = new ElementDataModel
+            try
             {
-                //TODO: get the family name of the element
-                Element = type,
-                CategoryName = type.Category.Name,
-                IsMaterial = false,
-                ChorusManName = type.get_Parameter(new Guid(_settingsService.Settings.NBSChorusManName)).AsValueString(),
-                ChorusProdRef = type.get_Parameter(new Guid(_settingsService.Settings.NBSChorusProdRef)).AsValueString(), 
-                ChorusManProdURL = type.get_Parameter(new Guid(_settingsService.Settings.NBSChorusManProdURL)).AsValueString(),
-                ManName = type.get_Parameter(new Guid(_settingsService.Settings.ManNameParameter.Guid)).AsValueString(),
-                ProdRef = type.get_Parameter(new Guid(_settingsService.Settings.ProdRefParameter.Guid)).AsValueString(),
-                ManProdURL = type.get_Parameter(new Guid(_settingsService.Settings.ManProdURLParameter.Guid)).AsValueString(),
-            };
+                var dataModel = new ElementDataModel
+                {
+                    //TODO: get the family name of the element
+                    Element = type,
+                    CategoryName = type.Category.Name,
+                    IsMaterial = false,
+                    ChorusManName = type.FindParameter(new Guid(_settingsService.Settings.NBSChorusManName)).AsValueString(),
+                    ChorusProdRef = type.FindParameter(new Guid(_settingsService.Settings.NBSChorusProdRef)).AsValueString(), 
+                    ChorusManProdURL = type.FindParameter(new Guid(_settingsService.Settings.NBSChorusManProdURL)).AsValueString(),
+                    ManName = type.FindParameter(new Guid(_settingsService.Settings.ManNameParameter.Guid)).AsValueString(),
+                    ProdRef = type.FindParameter(new Guid(_settingsService.Settings.ProdRefParameter.Guid)).AsValueString(),
+                    ManProdURL = type.FindParameter(new Guid(_settingsService.Settings.ManProdURLParameter.Guid)).AsValueString(),
+                };
 
-            Elements.Add(dataModel);
+                Elements.Add(dataModel);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error getting type data for {type} : {ex}", type, ex);
+            }
+
         }
     }
 
