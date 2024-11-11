@@ -49,7 +49,7 @@ internal static class Host
 
     public static void StopHost()
     {
-        _host.StopAsync().GetAwaiter().GetResult();
+        _host.StopAsync();
         _host.Dispose();
     }
 

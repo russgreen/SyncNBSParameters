@@ -32,6 +32,7 @@ public class App : ExternalApplication
     public override void OnStartup()
     {
         ThisApp = this;
+
         CachedUiCtrApp = Application;
         CtrApp = Application.ControlledApplication;
 
@@ -39,22 +40,24 @@ public class App : ExternalApplication
 
         _logger = Host.GetService<ILogger<App>>();
 
+        AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+        {
+            _logger.LogError(args.ExceptionObject as Exception, "An unhandled exception occurred");
+        };
+
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("##SyncfusionLicense##");
 
-        var panel = RibbonPanel(CachedUiCtrApp);
+        RibbonPanel();
     }
 
-    public Result OnShutdown(UIControlledApplication application)
+    public override void OnShutdown()
     {
         Host.StopHost();
-        Serilog.Log.CloseAndFlush();
-
-        return Result.Succeeded;
     }
 
     #region Ribbon Panel
 
-    private RibbonPanel RibbonPanel(UIControlledApplication application)
+    private void RibbonPanel()
     {
         RibbonPanel panel = null;
 
@@ -97,8 +100,6 @@ public class App : ExternalApplication
                        "About",
                        ExecutingAssemblyPath,
                        $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandAbout)}"));
-
-        return panel;
     }
 
     private System.Windows.Media.ImageSource PngImageSource(string embeddedPath)
