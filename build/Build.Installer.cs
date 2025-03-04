@@ -22,7 +22,7 @@ partial class Build
         Log.Information("Version : {version}", version);
 
         AdvancedInstallerCLI($"/edit {aipProjectPath} /SetVersion {version}");
-        AdvancedInstallerCLI($"/edit {aipProjectPath} /SetProductCode -langid 1033");
+        AdvancedInstallerCLI($"/edit {aipProjectPath} /SetProductCode -langid 2057");
         AdvancedInstallerCLI($"/build {aipProjectPath}");
 
         SignMSI(version);
