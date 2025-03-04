@@ -88,5 +88,13 @@ public AboutViewModel()
             LicenseName = "MIT License",
             LicenseUri = "https://github.com/ricaun-io/ricaun.Revit.UI.StatusBar?tab=MIT-1-ov-file#readme"
         });
+
+        OpenSourceSoftwareModels.Add(new OpenSourceSoftwareModel()
+        {
+            SoftwareName = "ricaun.Revit.UI.StatusBar",
+            SoftwareUri = "https://github.com/gluck/il-repack",
+            LicenseName = "Apache 2.0 License",
+            LicenseUri = "https://github.com/gluck/il-repack?tab=Apache-2.0-1-ov-file#readme"
+        });
     }
 }
