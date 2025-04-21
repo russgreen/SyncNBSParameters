@@ -6,11 +6,9 @@
 		<ClientId>9E3123EC-CDAF-43BE-8542-88106B12C13B</ClientId>
 		<FullClassName>SyncNBSParameters.App</FullClassName>
 		<VendorId>ARBG</VendorId>
-		<VisibilityMode>NotVisibleInFamily</VisibilityMode>
-		<VisibilityMode>NotVisibleWhenNoActiveDocument</VisibilityMode>
 	</AddIn>
-	<ManifestSettings>
+	<!--<ManifestSettings>
 		<UseRevitContext>False</UseRevitContext>
 		<ContextName>SyncNBSParams</ContextName>
-	</ManifestSettings>
+	</ManifestSettings>-->
 </RevitAddIns>

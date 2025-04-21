@@ -6,10 +6,10 @@
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://github.com/russgreen/SyncNBSParameters"/>
     <ROW Property="Manufacturer" Value="Russ Green"/>
-    <ROW Property="ProductCode" Value="2057:{C09DE3FC-9D23-4B31-ABD9-0AD106DDF956} " Type="16"/>
+    <ROW Property="ProductCode" Value="2057:{3291FF0D-17D5-4684-A20A-95AE8D6DB465} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="SyncNBSParameters"/>
-    <ROW Property="ProductVersion" Value="1.2.0" Options="32"/>
+    <ROW Property="ProductVersion" Value="1.3.0" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{194A2B58-4B5C-4EAB-A868-83BAD9DB2BD7}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -33,17 +33,20 @@
     <ROW Directory="Resources_2_Dir" Directory_Parent="SyncNBSParameters_1_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="Resources_3_Dir" Directory_Parent="SyncNBSParameters_2_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="Resources_4_Dir" Directory_Parent="SyncNBSParameters_3_Dir" DefaultDir="RESOUR~1|Resources"/>
+    <ROW Directory="Resources_5_Dir" Directory_Parent="SyncNBSParameters_4_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="Resources_Dir" Directory_Parent="NewFolder_Dir" DefaultDir="RESOUR~1|Resources"/>
     <ROW Directory="Revit_Dir" Directory_Parent="Autodesk_Dir" DefaultDir="Revit"/>
     <ROW Directory="SyncNBSParameters_1_Dir" Directory_Parent="__2_Dir" DefaultDir="SYNCNB~1|SyncNBSParameters"/>
     <ROW Directory="SyncNBSParameters_2_Dir" Directory_Parent="__3_Dir" DefaultDir="SYNCNB~1|SyncNBSParameters"/>
     <ROW Directory="SyncNBSParameters_3_Dir" Directory_Parent="__4_Dir" DefaultDir="SYNCNB~1|SyncNBSParameters"/>
+    <ROW Directory="SyncNBSParameters_4_Dir" Directory_Parent="__5_Dir" DefaultDir="SYNCNB~1|SyncNBSParameters"/>
     <ROW Directory="SyncNBSParameters_Dir" Directory_Parent="__1_Dir" DefaultDir="SYNCNB~1|SyncNBSParameters"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="__1_Dir" Directory_Parent="Addins_Dir" DefaultDir="2022"/>
     <ROW Directory="__2_Dir" Directory_Parent="Addins_Dir" DefaultDir="2023"/>
     <ROW Directory="__3_Dir" Directory_Parent="Addins_Dir" DefaultDir="2024"/>
     <ROW Directory="__4_Dir" Directory_Parent="Addins_Dir" DefaultDir="2025"/>
+    <ROW Directory="__5_Dir" Directory_Parent="Addins_Dir" DefaultDir="2026"/>
     <ROW Directory="__Dir" Directory_Parent="Addins_Dir" DefaultDir="2021"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
@@ -54,37 +57,45 @@
     <ROW Component="SharedParameters.txt_2" ComponentId="{51C04A19-174D-41CF-8798-28150A66145B}" Directory_="Resources_2_Dir" Attributes="0" KeyPath="SharedParameters.txt_2" Type="0"/>
     <ROW Component="SharedParameters.txt_3" ComponentId="{EF5BA214-83FE-495A-AC3B-58A16E593105}" Directory_="Resources_3_Dir" Attributes="0" KeyPath="SharedParameters.txt_3" Type="0"/>
     <ROW Component="SharedParameters.txt_4" ComponentId="{FDFE9B11-7871-4235-8AE6-A26784A06A91}" Directory_="Resources_4_Dir" Attributes="0" KeyPath="SharedParameters.txt_4" Type="0"/>
+    <ROW Component="SharedParameters.txt_5" ComponentId="{9F8E2BB7-FFC5-4F8B-B7EF-1DF3C260503E}" Directory_="Resources_5_Dir" Attributes="0" KeyPath="SharedParameters.txt_5" Type="0"/>
     <ROW Component="SyncNBSParameters.addin" ComponentId="{71028B19-554D-4B0E-A889-6A47C3468E63}" Directory_="__Dir" Attributes="0" KeyPath="SyncNBSParameters.addin" Type="0"/>
     <ROW Component="SyncNBSParameters.addin_1" ComponentId="{AABB8E1C-5663-4BB1-ADA5-448E82072AB8}" Directory_="__1_Dir" Attributes="0" KeyPath="SyncNBSParameters.addin_1" Type="0"/>
     <ROW Component="SyncNBSParameters.addin_2" ComponentId="{758DB0C1-DD1C-4DBE-864C-AD295A8DAAD1}" Directory_="__2_Dir" Attributes="0" KeyPath="SyncNBSParameters.addin_2" Type="0"/>
     <ROW Component="SyncNBSParameters.addin_3" ComponentId="{B0818EAD-0D57-49A1-8FA5-44D714057782}" Directory_="__3_Dir" Attributes="0" KeyPath="SyncNBSParameters.addin_3" Type="0"/>
     <ROW Component="SyncNBSParameters.addin_9" ComponentId="{CAC00431-4790-4081-B4D2-B9618A88309E}" Directory_="__4_Dir" Attributes="0" KeyPath="SyncNBSParameters.addin_9" Type="0"/>
     <ROW Component="SyncNBSParameters.deps.json" ComponentId="{34149180-18D1-4D09-A568-6DA3F05505C5}" Directory_="SyncNBSParameters_3_Dir" Attributes="0" KeyPath="SyncNBSParameters.deps.json" Type="0"/>
+    <ROW Component="SyncNBSParameters.deps.json_1" ComponentId="{73EAA1A3-4E2D-48EA-B845-3BD3F89425BE}" Directory_="SyncNBSParameters_4_Dir" Attributes="0" KeyPath="SyncNBSParameters.deps.json_1" Type="0"/>
     <ROW Component="SyncNBSParameters.dll" ComponentId="{3A51DAF4-1958-4E9C-BB5D-77A40293C961}" Directory_="NewFolder_Dir" Attributes="256" KeyPath="SyncNBSParameters.dll"/>
     <ROW Component="SyncNBSParameters.dll_1" ComponentId="{65D1C619-F2CE-4888-AA78-9DD9785C2FD5}" Directory_="SyncNBSParameters_Dir" Attributes="256" KeyPath="SyncNBSParameters.dll_1"/>
     <ROW Component="SyncNBSParameters.dll_2" ComponentId="{284A7C25-7731-4622-8EE9-6B2AF8534EEA}" Directory_="SyncNBSParameters_1_Dir" Attributes="256" KeyPath="SyncNBSParameters.dll_2"/>
     <ROW Component="SyncNBSParameters.dll_3" ComponentId="{3ADB5FCE-13CE-4DD9-8A0B-B4288C99BCD4}" Directory_="SyncNBSParameters_2_Dir" Attributes="256" KeyPath="SyncNBSParameters.dll_3"/>
     <ROW Component="SyncNBSParameters.dll_4" ComponentId="{0304A50F-1BAF-400C-A796-0747CB35C5F0}" Directory_="SyncNBSParameters_3_Dir" Attributes="256" KeyPath="SyncNBSParameters.dll_4"/>
+    <ROW Component="SyncNBSParameters.dll_5" ComponentId="{82FA357E-D9EF-4E61-9489-E102A735253D}" Directory_="SyncNBSParameters_4_Dir" Attributes="256" KeyPath="SyncNBSParameters.dll_5"/>
+    <ROW Component="SyncNBSParameters_Isolated.addin" ComponentId="{ACF78548-30D7-4A6A-919C-7AAB94F2B218}" Directory_="__5_Dir" Attributes="0" KeyPath="SyncNBSParameters_Isolated.addin" Type="0"/>
     <ROW Component="Syncfusion.Data.WPF.dll" ComponentId="{DF3F72B7-5151-4771-AC28-C3BFC9292131}" Directory_="NewFolder_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll"/>
     <ROW Component="Syncfusion.Data.WPF.dll_1" ComponentId="{CE2AD3EC-B8B8-4AC3-B440-D82D63E29371}" Directory_="SyncNBSParameters_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_1"/>
     <ROW Component="Syncfusion.Data.WPF.dll_2" ComponentId="{3DE4803A-6C12-42F1-A333-60753E4894E6}" Directory_="SyncNBSParameters_1_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_2"/>
     <ROW Component="Syncfusion.Data.WPF.dll_3" ComponentId="{91EA6238-6220-40CC-8BD4-76AC9835C7B9}" Directory_="SyncNBSParameters_2_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_3"/>
     <ROW Component="Syncfusion.Data.WPF.dll_4" ComponentId="{9D2A6CDB-4522-4A54-A4CD-59F28CB02CB1}" Directory_="SyncNBSParameters_3_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_4"/>
+    <ROW Component="Syncfusion.Data.WPF.dll_5" ComponentId="{C262A0EC-211E-4CFE-95C8-B007E7AC0347}" Directory_="SyncNBSParameters_4_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_5"/>
     <ROW Component="Syncfusion.Licensing.dll" ComponentId="{2F7263DF-CB6B-44D1-8E43-983E6FD2588F}" Directory_="NewFolder_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll"/>
     <ROW Component="Syncfusion.Licensing.dll_1" ComponentId="{8DFC2C1A-1588-412B-805C-D6F3C413C01B}" Directory_="SyncNBSParameters_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_1"/>
     <ROW Component="Syncfusion.Licensing.dll_2" ComponentId="{CAF5FDC7-0F2A-4A90-87CF-33A3806B2D7C}" Directory_="SyncNBSParameters_1_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_2"/>
     <ROW Component="Syncfusion.Licensing.dll_3" ComponentId="{6FA40183-3AA9-4D61-B5D9-6C6BDA4E77C3}" Directory_="SyncNBSParameters_2_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_3"/>
     <ROW Component="Syncfusion.Licensing.dll_4" ComponentId="{883A5A8B-4034-4DFF-AF2E-5975CC4A9303}" Directory_="SyncNBSParameters_3_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_4"/>
+    <ROW Component="Syncfusion.Licensing.dll_5" ComponentId="{863B786E-5E50-4AEF-8E2E-DF8E43B602DB}" Directory_="SyncNBSParameters_4_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_5"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll" ComponentId="{D3591A9A-0213-4EC3-B70D-A53AC06A45D4}" Directory_="NewFolder_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_1" ComponentId="{0CD9E491-86C4-460A-B413-69C2ECC59D57}" Directory_="SyncNBSParameters_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_1"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_2" ComponentId="{F95D3F9D-C3A4-4FA9-92B3-301756283128}" Directory_="SyncNBSParameters_1_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_2"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_3" ComponentId="{FCBB52F9-73E7-4125-AB1C-B1D3E21121C3}" Directory_="SyncNBSParameters_2_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_3"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_4" ComponentId="{15897B2C-380C-4876-9E53-C90790B935CC}" Directory_="SyncNBSParameters_3_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_4"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll_5" ComponentId="{26D77DC3-259C-4168-ABE6-3334E69BC58E}" Directory_="SyncNBSParameters_4_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_5"/>
     <ROW Component="Syncfusion.Shared.WPF.dll" ComponentId="{AB58C439-9E07-4FB0-B45B-BB9A41AA67B6}" Directory_="NewFolder_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_1" ComponentId="{C12F3624-1086-4A88-9890-E6CCB5080A86}" Directory_="SyncNBSParameters_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_1"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_2" ComponentId="{B0614FF4-0187-4DA2-9249-7FF10AC18A6D}" Directory_="SyncNBSParameters_1_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_2"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_3" ComponentId="{640F29BB-A06E-44D4-8990-CA5DF60834FD}" Directory_="SyncNBSParameters_2_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_3"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_4" ComponentId="{0A7659E5-9318-40BA-8D59-079AEC20CE76}" Directory_="SyncNBSParameters_3_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_4"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll_5" ComponentId="{1ED0CBC9-3619-46BE-A3EC-02076FE82F6E}" Directory_="SyncNBSParameters_4_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_5"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
@@ -127,6 +138,14 @@
     <ROW File="Syncfusion.Shared.WPF.dll_4" Component_="Syncfusion.Shared.WPF.dll_4" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R25\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
     <ROW File="SyncNBSParameters.deps.json" Component_="SyncNBSParameters.deps.json" FileName="SYNCNB~1.JSO|SyncNBSParameters.deps.json" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R25\SyncNBSParameters.deps.json" SelfReg="false"/>
     <ROW File="SyncNBSParameters.dll_4" Component_="SyncNBSParameters.dll_4" FileName="SYNCNB~1.DLL|SyncNBSParameters.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R25\SyncNBSParameters.dll" SelfReg="false"/>
+    <ROW File="SharedParameters.txt_5" Component_="SharedParameters.txt_5" FileName="SHARED~1.TXT|SharedParameters.txt" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\Resources\SharedParameters.txt" SelfReg="false"/>
+    <ROW File="SyncNBSParameters_Isolated.addin" Component_="SyncNBSParameters_Isolated.addin" FileName="SYNCNB~2.ADD|SyncNBSParameters.addin" Attributes="0" SourcePath="..\SyncNBSParameters\SyncNBSParameters_Isolated.addin" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll_5" Component_="Syncfusion.Data.WPF.dll_5" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll_5" Component_="Syncfusion.Licensing.dll_5" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll_5" Component_="Syncfusion.SfGrid.WPF.dll_5" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll_5" Component_="Syncfusion.Shared.WPF.dll_5" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
+    <ROW File="SyncNBSParameters.dll_5" Component_="SyncNBSParameters.dll_5" FileName="SYNCNB~1.DLL|SyncNBSParameters.dll" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\SyncNBSParameters.dll" SelfReg="false"/>
+    <ROW File="SyncNBSParameters.deps.json_1" Component_="SyncNBSParameters.deps.json_1" FileName="SYNCNB~1.JSO|SyncNBSParameters.deps.json" Attributes="0" SourcePath="..\SyncNBSParameters\bin\Release R26\SyncNBSParameters.deps.json" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -236,6 +255,14 @@
     <ROW Feature_="MainFeature" Component_="SyncNBSParameters.deps.json"/>
     <ROW Feature_="MainFeature" Component_="SyncNBSParameters.dll_4"/>
     <ROW Feature_="MainFeature" Component_="SyncNBSParameters.addin_9"/>
+    <ROW Feature_="MainFeature" Component_="SharedParameters.txt_5"/>
+    <ROW Feature_="MainFeature" Component_="SyncNBSParameters_Isolated.addin"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="SyncNBSParameters.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="SyncNBSParameters.deps.json_1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
