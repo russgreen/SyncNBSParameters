@@ -41,6 +41,15 @@
                                SelectionMode="Extended"
                                ColumnSizer="AutoWithLastColumnFill"
                                FrozenColumnCount="3" >
+            <syncfusion:SfDataGrid.StackedHeaderRows>
+                <syncfusion:StackedHeaderRow>
+                    <syncfusion:StackedHeaderRow.StackedColumns>
+                        <syncfusion:StackedColumn ChildColumns="ChorusManName,ChorusProdRef,ChorusManProdURL,ManName,ProdRef,ManProdURL" HeaderText="Family Parameters" />
+                        <syncfusion:StackedColumn ChildColumns="ChorusManNameMtrl,ChorusProdRefMtrl,ChorusManProdURLMtrl,ManNameMtrl,ProdRefMtrl,ManProdURLMtrl" HeaderText="Material Parameters" />
+                    </syncfusion:StackedHeaderRow.StackedColumns>
+                </syncfusion:StackedHeaderRow>
+            </syncfusion:SfDataGrid.StackedHeaderRows>
+
             <syncfusion:SfDataGrid.Columns>
                 <syncfusion:GridCheckBoxSelectorColumn MappingName="SelectorColumn" HeaderText="" AllowCheckBoxOnHeader="True" Width="34" />
                 <syncfusion:GridTextColumn MappingName="Element.Category.Name" HeaderText="Category"  />
@@ -51,7 +60,7 @@
                         </Style>
                     </syncfusion:GridTextColumn.CellStyle>
                 </syncfusion:GridTextColumn>
-                
+
                 <syncfusion:GridTextColumn MappingName="ChorusManName" HeaderText="NBSChorusManName"  />
                 <syncfusion:GridTextColumn MappingName="ChorusProdRef" HeaderText="NBSChorusProdRef"  />
                 <syncfusion:GridTextColumn MappingName="ChorusManProdURL" HeaderText="NBSChorusManProdURL" />
