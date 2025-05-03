@@ -1,4 +1,6 @@
-﻿using Nuke.Common;
+﻿using Microsoft.Build.Tasks;
+using Nuke.Common;
+using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.SignTool;
@@ -12,6 +14,7 @@ partial class Build
 {
     Target Sign => _ => _
     .TriggeredBy(Compile)
+    .OnlyWhenStatic(() => GitRepository.IsOnMainOrMasterBranch())
     .Executes(() => 
     {
         var compiledAssemblies = new List<string>();
