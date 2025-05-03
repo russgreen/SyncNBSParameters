@@ -366,6 +366,9 @@ FodyWeavers.xsd
 SyncfusionKey.txt
 BoldReportsKey.txt
 
+# AppCenter secret
+AppCenterSecret.txt
+
 # Advanced Installer
 Installer/*.back.aip
 Installer/SyncNBSParameters-cache/*
