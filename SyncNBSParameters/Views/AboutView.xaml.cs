@@ -25,8 +25,9 @@ public partial class AboutView : Window
     {
         InitializeComponent();
 
-        _viewModel = Host.GetService<ViewModels.AboutViewModel>();
+        _viewModel = new ViewModels.AboutViewModel();
         DataContext = _viewModel;
+
         _viewModel.ClosingRequest += (sender, e) => this.Close();
     }
 
