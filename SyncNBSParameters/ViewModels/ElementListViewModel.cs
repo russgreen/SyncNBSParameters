@@ -11,8 +11,6 @@ using System.Threading.Tasks;
 namespace SyncNBSParameters.ViewModels;
 internal partial class ElementListViewModel : BaseViewModel
 {
-    private readonly ILogger<ElementListViewModel> _logger = Host.GetService<ILogger<ElementListViewModel>>();
-
     [ObservableProperty]
     private ObservableCollection<Element> _elements = new();
 
@@ -35,7 +33,4 @@ internal partial class ElementListViewModel : BaseViewModel
         }
         //ElementNames = new ObservableCollection<string>(elements.Select(e => e.Name));
     }
-
-
-
 }

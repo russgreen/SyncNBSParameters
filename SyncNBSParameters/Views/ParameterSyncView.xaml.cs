@@ -24,7 +24,8 @@ public partial class ParameterSyncView : Window
     {
         InitializeComponent();
 
-        _viewModel = (ViewModels.ParameterSyncViewModel)this.DataContext;
+        _viewModel = Host.GetService<ViewModels.ParameterSyncViewModel>(); 
+        DataContext = _viewModel;
         _viewModel.ClosingRequest += (sender, e) => this.Close();
     }
 

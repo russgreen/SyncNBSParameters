@@ -17,8 +17,8 @@ using System.Threading;
 namespace SyncNBSParameters.ViewModels;
 internal partial class ParameterSyncViewModel : BaseViewModel
 {
-    private readonly ISettingsService _settingsService = Host.GetService<ISettingsService>();
-    private readonly ILogger<ParameterSyncViewModel> _logger = Host.GetService<ILogger<ParameterSyncViewModel>>();
+    private readonly ISettingsService _settingsService;
+    private readonly ILogger<ParameterSyncViewModel> _logger;
 
     [ObservableProperty]
     private System.Windows.Visibility _isWindowVisible = System.Windows.Visibility.Visible;
@@ -52,9 +52,19 @@ internal partial class ParameterSyncViewModel : BaseViewModel
 
     public bool HasAnyErrors => GetAnyErrors();
 
-
     public ParameterSyncViewModel()
     {
+        // design time constructor
+        _settingsService = null;
+        _logger = null;
+    }
+
+    public ParameterSyncViewModel(ISettingsService settingsService,
+        ILogger<ParameterSyncViewModel> logger)
+    {
+        _settingsService = settingsService;
+        _logger = logger;
+
         _settingsService.GetSettings();
 
         ManNameHeader = _settingsService.Settings.ManNameParameter.Name;
