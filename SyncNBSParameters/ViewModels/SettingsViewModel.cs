@@ -9,8 +9,8 @@ using System.ComponentModel.DataAnnotations;
 namespace SyncNBSParameters.ViewModels;
 internal partial class SettingsViewModel : BaseViewModel, IParameterRequester
 {
-    private readonly ISettingsService _settingsService = Host.GetService<ISettingsService>();
-    private readonly ILogger<SettingsViewModel> _logger = Host.GetService<ILogger<SettingsViewModel>>();
+    private readonly ISettingsService _settingsService;
+    private readonly ILogger<SettingsViewModel> _logger;
 
     [ObservableProperty]
     [Required]
@@ -36,9 +36,19 @@ internal partial class SettingsViewModel : BaseViewModel, IParameterRequester
     [Required]
     private ParameterDataModel _manProdURLMtrlParameter;
 
-
     public SettingsViewModel()
     {
+        // design time constructor
+        _settingsService = null;
+        _logger = null;
+    }
+
+    public SettingsViewModel(ISettingsService settingsService,
+        ILogger<SettingsViewModel> logger)
+    {
+        _settingsService = settingsService;
+        _logger = logger;
+
         _settingsService.GetSettings();
 
         ManNameParameter = _settingsService.Settings.ManNameParameter;

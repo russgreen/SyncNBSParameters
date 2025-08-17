@@ -14,7 +14,8 @@ public partial class SettingsView : Window
     {
         InitializeComponent();
 
-        _viewModel = (ViewModels.SettingsViewModel)this.DataContext;
+        _viewModel = Host.GetService<ViewModels.SettingsViewModel>();
+        DataContext = _viewModel;
         _viewModel.ClosingRequest += (sender, e) => this.Close();
     }
 

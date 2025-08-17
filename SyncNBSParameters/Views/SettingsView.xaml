@@ -6,16 +6,11 @@
         xmlns:local="clr-namespace:SyncNBSParameters.Views"
         xmlns:viewModels="clr-namespace:SyncNBSParameters.ViewModels"    
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance {x:Type viewModels:SettingsViewModel}, IsDesignTimeCreatable=True}"
         Title="Settings" 
         Width="800" Height="350" 
         MinWidth="800" MinHeight="350"
         FontSize="14" FontFamily="Segoe UI Light" 
         WindowStartupLocation="CenterScreen">
-
-    <Window.DataContext>
-        <viewModels:SettingsViewModel />
-    </Window.DataContext>
 
     <Grid Margin="10" >
         <Grid.RowDefinitions>

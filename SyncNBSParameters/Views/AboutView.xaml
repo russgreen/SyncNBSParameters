@@ -7,16 +7,11 @@
         xmlns:viewModels="clr-namespace:SyncNBSParameters.ViewModels" 
         xmlns:controls="clr-namespace:SyncNBSParameters.Controls"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance {x:Type viewModels:AboutViewModel}, IsDesignTimeCreatable=True}"
         Title="About" Height="400" Width="600"
         FontSize="14" FontFamily="Segoe UI Light" 
         ResizeMode="NoResize" 
         WindowStyle="SingleBorderWindow" 
         WindowStartupLocation="CenterScreen">
-
-    <Window.DataContext>
-        <viewModels:AboutViewModel />
-    </Window.DataContext>
 
     <Window.Resources>
         <ResourceDictionary>

@@ -1,9 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SyncNBSParameters.Services;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
+using SyncNBSParameters.Services;
+using SyncNBSParameters.ViewModels;
+using SyncNBSParameters.Views;
 using System;
 
 namespace SyncNBSParameters;
@@ -35,6 +37,11 @@ internal static class Host
                 //services.AddSingleton<ISoftwareUpdateService, SoftwareUpdateService>();
 
                 services.AddTransient<ISettingsService, SettingsService>();
+
+                // ViewModels
+                services.AddTransient<ParameterSyncViewModel>();
+                services.AddTransient<SettingsViewModel>();
+                services.AddTransient<SettingsViewModel>();
             })
             .Build();
 

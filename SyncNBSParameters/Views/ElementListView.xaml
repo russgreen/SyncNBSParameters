@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:SyncNBSParameters.Views"
          xmlns:viewModels="clr-namespace:SyncNBSParameters.ViewModels" 
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance viewModels:ElementListViewModel, IsDesignTimeCreatable=True}"
         Title="Failed elements" Height="450" Width="400" 
         WindowStartupLocation="CenterScreen" Topmost="True">
 

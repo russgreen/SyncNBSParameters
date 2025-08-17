@@ -19,9 +19,15 @@ namespace SyncNBSParameters.Views;
 /// </summary>
 public partial class AboutView : Window
 {
+    private readonly ViewModels.AboutViewModel _viewModel;
+
     public AboutView()
     {
         InitializeComponent();
+
+        _viewModel = Host.GetService<ViewModels.AboutViewModel>();
+        DataContext = _viewModel;
+        _viewModel.ClosingRequest += (sender, e) => this.Close();
     }
 
     private void OpenLink(object sender, RoutedEventArgs e)

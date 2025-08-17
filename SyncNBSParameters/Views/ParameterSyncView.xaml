@@ -8,13 +8,8 @@
         xmlns:converters="clr-namespace:SyncNBSParameters.Converters" 
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance viewModels:ParameterSyncViewModel, IsDesignTimeCreatable=True}"
         Visibility="{Binding IsWindowVisible, Mode=TwoWay}"
         Title="Sync NBS Parameters" Height="450" Width="800">
-
-    <Window.DataContext>
-        <viewModels:ParameterSyncViewModel />
-    </Window.DataContext>
 
     <Window.Resources>
         <ResourceDictionary>
@@ -31,7 +26,7 @@
 
         <syncfusion:SfDataGrid Grid.Row="0"
                                ItemsSource="{Binding Elements}"
-                               SelectedItems="{Binding SelectedElements}"
+                               SelectedItems="{Binding SelectedElements, Mode=TwoWay}"
                                AutoGenerateColumns="False"
                                AllowEditing="False"
                                AllowGrouping="False"
