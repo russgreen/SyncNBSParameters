@@ -1,24 +1,24 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
 using Microsoft.Extensions.Logging;
-using SyncNBSParameters.Extensions;
-using SyncNBSParameters.Services;
-using Nice3point.Revit.Extensions;
-using ricaun.Revit.UI.StatusBar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Nice3point.Revit.Toolkit.External;
 using Nice3point.Revit.Toolkit;
+using Nice3point.Revit.Toolkit.External;
+using Serilog.Context;
 
 namespace SyncNBSParameters.Commands;
 
 [Transaction(TransactionMode.Manual)]
 public class CommandParameterSync : ExternalCommand
 {
+    private readonly ILogger<CommandParameterSync> _logger = Host.GetService<ILogger<CommandParameterSync>>();
+
     public override void Execute()
     {
+        using (LogContext.PushProperty("UsageTracking", true))
+        {
+            _logger.LogInformation("{command}", nameof(CommandParameterSync));
+        }
+
         App.CachedUiApp = Context.UiApplication;
         App.RevitDocument = Context.ActiveDocument;
 
