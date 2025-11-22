@@ -41,10 +41,12 @@ internal static class Host
                 .WriteTo.File(new JsonFormatter(), logPath,
                     restrictedToMinimumLevel: LogEventLevel.Warning,
                     rollingInterval: RollingInterval.Day,
-                    retainedFileCountLimit: 7))
+                    retainedFileCountLimit: 7));
 
-            //write to google analytics
-            .WriteTo.GoogleAnalytics(opts =>
+#if !DEBUG
+        //write to google analytics
+        loggerConfigSyncNBSParameters = loggerConfigSyncNBSParameters
+        .WriteTo.GoogleAnalytics(opts =>
             {
                 opts.MeasurementId = "##MEASUREMENTID##";
                 opts.ApiSecret = "##APISECRET##";
@@ -61,6 +63,7 @@ internal static class Host
 
                 opts.CountryId = regionInfo.TwoLetterISORegionName;
             });
+#endif
 
         Log.Logger = loggerConfigSyncNBSParameters.CreateLogger();
 

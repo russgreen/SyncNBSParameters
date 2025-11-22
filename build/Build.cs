@@ -5,20 +5,18 @@ using Nuke.Common.ProjectModel;
 
 partial class Build : NukeBuild
 {
-    readonly AbsolutePath ArtifactsDirectory = RootDirectory / "output";
+    readonly AbsolutePath OutputDirectory = RootDirectory / "output";
+    readonly AbsolutePath SourceDirectory = RootDirectory / "source";
 
     readonly string[] CompiledAssemblies = { "SyncNBSParameters.dll" };
 
     [GitRepository]
+    [Required]
     readonly GitRepository GitRepository;
 
     [Solution(GenerateProjects = true)]
     Solution Solution;
 
     public static int Main() => Execute<Build>(x => x.Clean);
-
-    //[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    //readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
-
 
 }
