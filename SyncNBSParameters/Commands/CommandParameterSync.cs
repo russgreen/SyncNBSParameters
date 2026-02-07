@@ -19,8 +19,8 @@ public class CommandParameterSync : ExternalCommand
             _logger.LogInformation("{command}", nameof(CommandParameterSync));
         }
 
-        App.CachedUiApp = Context.UiApplication;
-        App.RevitDocument = Context.ActiveDocument;
+        App.CachedUiApp = RevitContext.UiApplication;
+        App.RevitDocument = RevitContext.ActiveDocument;
 
         var newView = new Views.ParameterSyncView();
         newView.ShowDialog();

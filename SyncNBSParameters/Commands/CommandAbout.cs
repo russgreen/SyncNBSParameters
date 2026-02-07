@@ -18,8 +18,8 @@ internal class CommandAbout : ExternalCommand
             _logger.LogInformation("{command}", nameof(CommandAbout));
         }
 
-        App.CachedUiApp = Context.UiApplication;
-        App.RevitDocument = Context.ActiveDocument;
+        App.CachedUiApp = RevitContext.UiApplication;
+        App.RevitDocument = RevitContext.ActiveDocument;
 
         var newView = new Views.AboutView();
         newView.ShowDialog();
