@@ -19,7 +19,7 @@ internal partial class ParameterSelectorViewModel : BaseViewModel
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasAnyErrors))]
-    private ParameterDataModel _selectedParameter;
+    private ParameterDataModel? _selectedParameter;
 
     public bool HasAnyErrors => GetAnyErrors();
 
@@ -39,8 +39,11 @@ internal partial class ParameterSelectorViewModel : BaseViewModel
     [RelayCommand]
     private void SendParameter()
     {
-        _callingViewModel.ParameterComplete(_targetVariable, SelectedParameter);
-        this.OnClosingRequest();
+        if (SelectedParameter != null)
+        {
+            _callingViewModel.ParameterComplete(_targetVariable, SelectedParameter);
+            this.OnClosingRequest();
+        }
     }
 
     private bool GetAnyErrors()
@@ -72,17 +75,24 @@ internal partial class ParameterSelectorViewModel : BaseViewModel
         foreach (var element in parameters)
         {
             var sharedParameterElement = element as SharedParameterElement;
+            if (sharedParameterElement == null)
+            {
+                continue;
+            }
+
             var definition = sharedParameterElement.GetDefinition() as Definition;
 
             if (definition == null)
                 continue;
+
+            var binding = map.get_Item(definition) as ElementBinding;
 
             var parameterDataModel = new ParameterDataModel
             {
                 ID = element.Id,
                 Name = definition.Name,
                 Guid = sharedParameterElement.GuidValue.ToString(),
-                Binding = map.get_Item(definition) as ElementBinding
+                Binding = binding!
             };
 
             switch (parameterType)

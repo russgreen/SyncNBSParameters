@@ -17,8 +17,8 @@ using System.Threading;
 namespace SyncNBSParameters.ViewModels;
 internal partial class ParameterSyncViewModel : BaseViewModel
 {
-    private readonly ISettingsService _settingsService;
-    private readonly ILogger<ParameterSyncViewModel> _logger;
+    private readonly ISettingsService _settingsService = null!;
+    private readonly ILogger<ParameterSyncViewModel> _logger = null!;
 
     [ObservableProperty]
     private System.Windows.Visibility _isWindowVisible = System.Windows.Visibility.Visible;
@@ -31,22 +31,22 @@ internal partial class ParameterSyncViewModel : BaseViewModel
     private ObservableCollection<object> _selectedElements = new();
 
     [ObservableProperty]
-    private string _manNameHeader;
+    private string _manNameHeader = string.Empty;
 
     [ObservableProperty]
-    private string _prodRefHeader;
+    private string _prodRefHeader = string.Empty;
 
     [ObservableProperty]
-    private string _manProdURLHeader;
+    private string _manProdURLHeader = string.Empty;
 
     [ObservableProperty]
-    private string _manNameMtrlHeader;
+    private string _manNameMtrlHeader = string.Empty;
 
     [ObservableProperty]
-    private string _prodRefMtrlHeader;
+    private string _prodRefMtrlHeader = string.Empty;
 
     [ObservableProperty]
-    private string _manProdURLMtrlHeader;
+    private string _manProdURLMtrlHeader = string.Empty;
 
     private List<Element> _elementsNotUpdated = new List<Element>();
 
@@ -55,8 +55,6 @@ internal partial class ParameterSyncViewModel : BaseViewModel
     public ParameterSyncViewModel()
     {
         // design time constructor
-        _settingsService = null;
-        _logger = null;
     }
 
     public ParameterSyncViewModel(ISettingsService settingsService,
@@ -237,8 +235,7 @@ internal partial class ParameterSyncViewModel : BaseViewModel
         }
     }
 
-
-    private void SelectedElements_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    private void SelectedElements_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         OnPropertyChanged(nameof(HasAnyErrors));
     }

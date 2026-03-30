@@ -7,7 +7,7 @@ namespace SyncNBSParameters.Views;
 /// </summary>
 public partial class ParameterSelectorView : Window
 {
-    private readonly ViewModels.ParameterSelectorViewModel _viewModel;
+    private readonly ViewModels.ParameterSelectorViewModel _viewModel = null!;
 
     public ParameterSelectorView()
     {

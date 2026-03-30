@@ -11,8 +11,12 @@ namespace SyncNBSParameters.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var data = value as ElementDataModel;
+            if (data == null)
+            {
+                return Brushes.DarkGreen;
+            }
 
-            if(data.ChorusManName != data.ManName || 
+            if (data.ChorusManName != data.ManName || 
                 data.ChorusProdRef != data.ProdRef ||
                 data.ChorusManProdURL != data.ManProdURL ||
                 data.ChorusManNameMtrl != data.ManNameMtrl ||

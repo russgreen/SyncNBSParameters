@@ -10,7 +10,7 @@ namespace SyncNBSParameters.Commands;
 [Transaction(TransactionMode.Manual)]
 internal class CommandSettings : ExternalCommand
 {
-    private readonly ILogger<CommandSettings> _logger = Host.GetService<ILogger<CommandSettings>>();
+    private readonly ILogger<CommandSettings> _logger = Host.GetService<ILogger<CommandSettings>>()!;
 
     public override void Execute()
     {
@@ -19,8 +19,8 @@ internal class CommandSettings : ExternalCommand
             _logger.LogInformation("{command}", nameof(CommandSettings));
         }
 
-        App.CachedUiApp = RevitContext.UiApplication;
-        App.RevitDocument = RevitContext.ActiveDocument;
+        App.CachedUiApp = RevitContext.UiApplication!;
+        App.RevitDocument = RevitContext.ActiveDocument!;
 
         var newView = new Views.SettingsView();
         newView.ShowDialog();

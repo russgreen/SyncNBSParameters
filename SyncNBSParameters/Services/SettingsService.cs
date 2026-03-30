@@ -31,7 +31,7 @@ internal class SettingsService : ISettingsService
 
     private readonly ILogger<SettingsService> _logger;
 
-    private Schema _schema = null;
+    private Schema? _schema = null;
 
     public SettingsModel Settings { get; set; }
 
@@ -169,12 +169,16 @@ internal class SettingsService : ISettingsService
         {
             _schema = GetSchema(_schemaName);
             var dataStorageElement = FindDataStorageElement(_schema);
+            if (dataStorageElement == null)
+            {
+                return false;
+            }
 
             using (Transaction storeData = new Transaction(App.RevitDocument, "SyncNBSParametersSettings"))
             {
                 storeData.Start();
 
-                Entity entity = dataStorageElement.GetEntity(_schema);
+                Entity entity = dataStorageElement.GetEntity(_schema!);
 
                 entity.Set<string>(_schema.GetField(_manNameParameterName), Settings.ManNameParameter.Name);
                 entity.Set<string>(_schema.GetField(_manNameParameterGuid), Settings.ManNameParameter.Guid);
@@ -242,13 +246,15 @@ internal class SettingsService : ISettingsService
 
     private Schema GetSchema(string schemaName)
     {
-        Schema s = Schema.ListSchemas().FirstOrDefault(q => q.SchemaName == schemaName);
-        _logger.LogDebug("Schema {schemaName} found: {s}", s.SchemaName, s);
-
-        return s;
+        Schema? s = Schema.ListSchemas().FirstOrDefault(q => q.SchemaName == schemaName);
+        if (s != null)
+        {
+            _logger.LogDebug("Schema {schemaName} found: {s}", s.SchemaName, s);
+        }
+        return s!;
     }
 
-    private DataStorage FindDataStorageElement(Schema schema)
+    private DataStorage? FindDataStorageElement(Schema schema)
     {
         var collector = App.RevitDocument.CollectElements()
             .OfClass(typeof(DataStorage))
@@ -262,26 +268,31 @@ internal class SettingsService : ISettingsService
         try
         {
             var schema = GetSchema(_schemaName);
-            var dataStorageElement = FindDataStorageElement(_schema);
-            var entity = dataStorageElement.GetEntity(_schema);
+            var dataStorageElement = FindDataStorageElement(_schema!);
+            if (dataStorageElement == null)
+            {
+                return;
+            }
 
-            Settings.ManNameParameter.Name = entity.Get<string>(_schema.GetField(_manNameParameterName));
-            Settings.ManNameParameter.Guid = entity.Get<string>(_schema.GetField(_manNameParameterGuid));
+            var entity = dataStorageElement.GetEntity(_schema!);
 
-            Settings.ProdRefParameter.Name = entity.Get<string>(_schema.GetField(_prodRefParameterName));
-            Settings.ProdRefParameter.Guid = entity.Get<string>(_schema.GetField(_prodRefParameterGuid));
+            Settings.ManNameParameter.Name = entity.Get<string>(_schema!.GetField(_manNameParameterName)!);
+            Settings.ManNameParameter.Guid = entity.Get<string>(_schema.GetField(_manNameParameterGuid)!);
 
-            Settings.ManProdURLParameter.Name = entity.Get<string>(_schema.GetField(_manProdURLParameterName));
-            Settings.ManProdURLParameter.Guid = entity.Get<string>(_schema.GetField(_manProdURLParameterGuid));
+            Settings.ProdRefParameter.Name = entity.Get<string>(_schema.GetField(_prodRefParameterName)!);
+            Settings.ProdRefParameter.Guid = entity.Get<string>(_schema.GetField(_prodRefParameterGuid)!);
 
-            Settings.ManNameMtrlParameter.Name = entity.Get<string>(_schema.GetField(_manNameMtrlParameterName));
-            Settings.ManNameMtrlParameter.Guid = entity.Get<string>(_schema.GetField(_manNameMtrlParameterGuid));
+            Settings.ManProdURLParameter.Name = entity.Get<string>(_schema.GetField(_manProdURLParameterName)!);
+            Settings.ManProdURLParameter.Guid = entity.Get<string>(_schema.GetField(_manProdURLParameterGuid)!);
 
-            Settings.ProdRefMtrlParameter.Name = entity.Get<string>(_schema.GetField(_prodRefMtrlParameterName));
-            Settings.ProdRefMtrlParameter.Guid = entity.Get<string>(_schema.GetField(_prodRefMtrlParameterGuid));
+            Settings.ManNameMtrlParameter.Name = entity.Get<string>(_schema.GetField(_manNameMtrlParameterName)!);
+            Settings.ManNameMtrlParameter.Guid = entity.Get<string>(_schema.GetField(_manNameMtrlParameterGuid)!);
 
-            Settings.ManProdURLMtrlParameter.Name = entity.Get<string>(_schema.GetField(_manProdURLMtrlParameterName));
-            Settings.ManProdURLMtrlParameter.Guid = entity.Get<string>(_schema.GetField(_manProdURLMtrlParameterGuid));
+            Settings.ProdRefMtrlParameter.Name = entity.Get<string>(_schema.GetField(_prodRefMtrlParameterName)!);
+            Settings.ProdRefMtrlParameter.Guid = entity.Get<string>(_schema.GetField(_prodRefMtrlParameterGuid)!);
+
+            Settings.ManProdURLMtrlParameter.Name = entity.Get<string>(_schema.GetField(_manProdURLMtrlParameterName)!);
+            Settings.ManProdURLMtrlParameter.Guid = entity.Get<string>(_schema.GetField(_manProdURLMtrlParameterGuid)!);
         }
         catch (Exception ex)
         {

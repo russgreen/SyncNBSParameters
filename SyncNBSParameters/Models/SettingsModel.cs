@@ -14,20 +14,20 @@ internal partial class SettingsModel : ObservableObject
     public readonly string NBSChorusManProdURL_mtrl = "8E182EF2-EBA8-43DF-8387-86106BE35563";
 
     [ObservableProperty]
-    private ParameterDataModel _manNameParameter;
+    private ParameterDataModel _manNameParameter = null!;
 
     [ObservableProperty]
-    private ParameterDataModel _prodRefParameter;
+    private ParameterDataModel _prodRefParameter = null!;
 
     [ObservableProperty]
-    private ParameterDataModel _manProdURLParameter;
+    private ParameterDataModel _manProdURLParameter = null!;
 
     [ObservableProperty]
-    private ParameterDataModel _manNameMtrlParameter;
+    private ParameterDataModel _manNameMtrlParameter = null!;
 
     [ObservableProperty]
-    private ParameterDataModel _prodRefMtrlParameter;
+    private ParameterDataModel _prodRefMtrlParameter = null!;
 
     [ObservableProperty]
-    private ParameterDataModel _manProdURLMtrlParameter;
+    private ParameterDataModel _manProdURLMtrlParameter = null!;
 }

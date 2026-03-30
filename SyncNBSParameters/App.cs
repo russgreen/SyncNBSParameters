@@ -19,16 +19,16 @@ public class App : ExternalApplication
     public static readonly string ExecutingAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
     // class instance
-    public static App ThisApp;
+    public static App ThisApp = null!;
 
-    public static UIControlledApplication CachedUiCtrApp;
-    public static UIApplication CachedUiApp;
-    public static ControlledApplication CtrApp;
-    public static Autodesk.Revit.DB.Document RevitDocument;
+    public static UIControlledApplication CachedUiCtrApp = null!;
+    public static UIApplication CachedUiApp = null!;
+    public static ControlledApplication CtrApp = null!;
+    public static Autodesk.Revit.DB.Document RevitDocument = null!;
 
     private readonly string _tabName = "NBS";
 
-    private ILogger<App> _logger;
+    private ILogger<App> _logger = null!;
 
     public override void OnStartup()
     {
@@ -39,7 +39,7 @@ public class App : ExternalApplication
 
         Host.StartHost();
 
-        _logger = Host.GetService<ILogger<App>>();
+        _logger = Host.GetService<ILogger<App>>()!;
 
         AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
         {
@@ -60,7 +60,7 @@ public class App : ExternalApplication
 
     private void RibbonPanel()
     {
-        RibbonPanel panel = null;
+        RibbonPanel? panel = null;
 
         //try and put the panel in the NBS tab
         try
@@ -71,42 +71,48 @@ public class App : ExternalApplication
         {
             panel = CachedUiCtrApp.CreateRibbonPanel(Tab.AddIns, "SyncNBSParameters_Panel");
         }
-         
-        panel.Title = "Sync Parameters";
 
-        var splitButtonData = new SplitButtonData("SyncNBSParametersSplit", "Sync Parameters");
-        var splitButton = panel.AddItem(splitButtonData) as SplitButton;
-        splitButton.IsSynchronizedWithCurrentItem = false;
+        if (panel != null)
+        {
+            panel.Title = "Sync Parameters";
 
-        splitButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "https://github.com/russgreen/SyncNBSParameters"));
+            var splitButtonData = new SplitButtonData("SyncNBSParametersSplit", "Sync Parameters");
+            var splitButton = panel.AddItem(splitButtonData) as SplitButton;
+            if (splitButton != null)
+            {
+                splitButton.IsSynchronizedWithCurrentItem = false;
 
-        var buttonSync = splitButton.AddPushButton(new PushButtonData(
-                       "CommandParameterSync",
-                       "Sync Parameters",
-                       ExecutingAssemblyPath,
-                       $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandParameterSync)}"));
-        buttonSync.ToolTip = "Sync parameter values";
-        buttonSync.LargeImage = PngImageSource("SyncNBSParameters.Resources.SyncData.png");
-        buttonSync.SetAvailabilityController<CommandAvailabilityProject>();
+                splitButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, "https://github.com/russgreen/SyncNBSParameters"));
 
-        var buttonSettings = splitButton.AddPushButton(new PushButtonData(
-            "CommandSettings",
-            "Settings",
-            ExecutingAssemblyPath,
-            $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandSettings)}"));
-        buttonSettings.SetAvailabilityController<CommandAvailabilityProject>();
+                var buttonSync = splitButton.AddPushButton(new PushButtonData(
+                               "CommandParameterSync",
+                               "Sync Parameters",
+                               ExecutingAssemblyPath,
+                               $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandParameterSync)}"));
+                buttonSync.ToolTip = "Sync parameter values";
+                buttonSync.LargeImage = PngImageSource("SyncNBSParameters.Resources.SyncData.png");
+                buttonSync.SetAvailabilityController<CommandAvailabilityProject>();
 
-        var buttonAbout = splitButton.AddPushButton(new PushButtonData(
-                       "CommandAbout",
-                       "About",
-                       ExecutingAssemblyPath,
-                       $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandAbout)}"));
+                var buttonSettings = splitButton.AddPushButton(new PushButtonData(
+                    "CommandSettings",
+                    "Settings",
+                    ExecutingAssemblyPath,
+                    $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandSettings)}"));
+                buttonSettings.SetAvailabilityController<CommandAvailabilityProject>();
+
+                var buttonAbout = splitButton.AddPushButton(new PushButtonData(
+                               "CommandAbout",
+                               "About",
+                               ExecutingAssemblyPath,
+                               $"{nameof(SyncNBSParameters)}.{nameof(Commands)}.{nameof(CommandAbout)}"));
+            }
+        }
     }
 
-    private System.Windows.Media.ImageSource PngImageSource(string embeddedPath)
+    private System.Windows.Media.ImageSource? PngImageSource(string embeddedPath)
     {
         var stream = GetType().Assembly.GetManifestResourceStream(embeddedPath);
-        System.Windows.Media.ImageSource imageSource;
+        System.Windows.Media.ImageSource? imageSource;
         try
         {
             imageSource = BitmapFrame.Create(stream);

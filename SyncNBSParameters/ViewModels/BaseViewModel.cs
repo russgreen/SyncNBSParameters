@@ -4,7 +4,7 @@ using System;
 namespace SyncNBSParameters.ViewModels;
 internal class BaseViewModel : ObservableValidator
 {
-    public event EventHandler ClosingRequest;
+    public event EventHandler? ClosingRequest;
 
     protected void OnClosingRequest()
     {

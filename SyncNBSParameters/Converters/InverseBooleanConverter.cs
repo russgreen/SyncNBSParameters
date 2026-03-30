@@ -11,5 +11,5 @@ internal class InverseBooleanConverter : IValueConverter
      => !(bool?)value ?? true;
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-     => !(value as bool?);
+     => !(value as bool?) ?? true;
 }

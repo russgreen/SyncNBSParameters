@@ -8,13 +8,13 @@ namespace SyncNBSParameters.Views;
 /// </summary>
 public partial class SettingsView : Window
 {
-    private readonly SettingsViewModel _viewModel;
+    private readonly SettingsViewModel _viewModel = null!;
 
     public SettingsView()
     {
         InitializeComponent();
 
-        _viewModel = Host.GetService<ViewModels.SettingsViewModel>();
+        _viewModel = Host.GetService<ViewModels.SettingsViewModel>()!;
         DataContext = _viewModel;
         _viewModel.ClosingRequest += (sender, e) => this.Close();
     }

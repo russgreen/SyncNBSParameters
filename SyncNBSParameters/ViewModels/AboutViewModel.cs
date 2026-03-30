@@ -10,10 +10,10 @@ namespace SyncNBSParameters.ViewModels;
 internal partial class AboutViewModel : BaseViewModel
 {
     [ObservableProperty]
-    private string _description;
+    private string _description = string.Empty;
 
     [ObservableProperty]
-    private string _copyright;
+    private string _copyright = string.Empty;
 
     [ObservableProperty]
     private List<OpenSourceSoftwareModel> _openSourceSoftwareModels = new List<OpenSourceSoftwareModel>();
@@ -23,10 +23,10 @@ public AboutViewModel()
         var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
         var descriptionAttribute = assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyDescriptionAttribute), false).FirstOrDefault() as System.Reflection.AssemblyDescriptionAttribute;
-        Description = descriptionAttribute?.Description;
+        Description = descriptionAttribute?.Description ?? string.Empty;
 
         var copyRightAttribute = assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyCopyrightAttribute), false).FirstOrDefault() as System.Reflection.AssemblyCopyrightAttribute;
-        Copyright = copyRightAttribute?.Copyright;
+        Copyright = copyRightAttribute?.Copyright ?? string.Empty;
 
         BuildOpenSourceSoftwareList();
     }

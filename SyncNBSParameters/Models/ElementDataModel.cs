@@ -10,47 +10,47 @@ namespace SyncNBSParameters.Models;
 internal partial class ElementDataModel : ObservableObject
 {
     [ObservableProperty]
-    private Element _element;
+    private Element _element = null!;
 
     [ObservableProperty]
-    private string _categoryName;
+    private string _categoryName = string.Empty;
 
     [ObservableProperty] 
     private bool _isMaterial;
 
     [ObservableProperty]
-    private string _chorusManName;
+    private string _chorusManName = string.Empty;
 
     [ObservableProperty]
-    private string _chorusProdRef;
+    private string _chorusProdRef = string.Empty;
 
     [ObservableProperty]
-    private string _chorusManProdURL;
+    private string _chorusManProdURL = string.Empty;
 
     [ObservableProperty]
-    private string _chorusManNameMtrl;
+    private string _chorusManNameMtrl = string.Empty;
 
     [ObservableProperty]
-    private string _chorusProdRefMtrl;
+    private string _chorusProdRefMtrl = string.Empty;
 
     [ObservableProperty]
-    private string _chorusManProdURLMtrl;
+    private string _chorusManProdURLMtrl = string.Empty;
 
     [ObservableProperty]
-    private string _manName;
+    private string _manName = string.Empty;
 
     [ObservableProperty]
-    private string _prodRef;
+    private string _prodRef = string.Empty;
 
     [ObservableProperty]
-    private string _manProdURL;
+    private string _manProdURL = string.Empty;
 
     [ObservableProperty]
-    private string _manNameMtrl;
+    private string _manNameMtrl = string.Empty;
 
     [ObservableProperty]
-    private string _prodRefMtrl;
+    private string _prodRefMtrl = string.Empty;
 
     [ObservableProperty]
-    private string _manProdURLMtrl;
+    private string _manProdURLMtrl = string.Empty;
 }

@@ -10,7 +10,7 @@ namespace SyncNBSParameters.Commands;
 [Transaction(TransactionMode.Manual)]
 public class CommandParameterSync : ExternalCommand
 {
-    private readonly ILogger<CommandParameterSync> _logger = Host.GetService<ILogger<CommandParameterSync>>();
+    private readonly ILogger<CommandParameterSync> _logger = Host.GetService<ILogger<CommandParameterSync>>()!;
 
     public override void Execute()
     {
@@ -19,8 +19,8 @@ public class CommandParameterSync : ExternalCommand
             _logger.LogInformation("{command}", nameof(CommandParameterSync));
         }
 
-        App.CachedUiApp = RevitContext.UiApplication;
-        App.RevitDocument = RevitContext.ActiveDocument;
+        App.CachedUiApp = RevitContext.UiApplication!;
+        App.RevitDocument = RevitContext.ActiveDocument!;
 
         var newView = new Views.ParameterSyncView();
         newView.ShowDialog();
