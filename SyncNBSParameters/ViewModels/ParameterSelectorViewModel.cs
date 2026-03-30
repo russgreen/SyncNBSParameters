@@ -62,7 +62,7 @@ internal partial class ParameterSelectorViewModel : BaseViewModel
     {
         var parameterDataModels = new List<ParameterDataModel>();
 
-        var parameters = App.RevitDocument.GetElements()
+        var parameters = App.RevitDocument.CollectElements()
             .WhereElementIsNotElementType()
             .OfClass(typeof(SharedParameterElement))
             .ToList();

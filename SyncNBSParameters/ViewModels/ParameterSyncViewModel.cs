@@ -106,7 +106,9 @@ internal partial class ParameterSyncViewModel : BaseViewModel
 
     private void GetElementsToSync()
     {
-        var types = App.RevitDocument.GetTypes()
+        var types = App.RevitDocument.CollectElements()
+            .Types()
+            .ToElements()
             .Where(x => x.HasNewChorusParameters(_settingsService.ObjectParameterGuids.Keys.ToList()));
         _logger.LogDebug("Found {count} type(s) with new parameters", types.Count());
 
@@ -116,16 +118,16 @@ internal partial class ParameterSyncViewModel : BaseViewModel
             {
                 var dataModel = new ElementDataModel
                 {
-                    //TODO: get the family name of the element
+                    //TODO get the family name of the element
                     Element = type,
                     CategoryName = type.Category.Name,
                     IsMaterial = false,
-                    ChorusManName = type.FindParameter(new Guid(_settingsService.Settings.NBSChorusManName)).AsValueString(),
-                    ChorusProdRef = type.FindParameter(new Guid(_settingsService.Settings.NBSChorusProdRef)).AsValueString(), 
-                    ChorusManProdURL = type.FindParameter(new Guid(_settingsService.Settings.NBSChorusManProdURL)).AsValueString(),
-                    ManName = type.FindParameter(new Guid(_settingsService.Settings.ManNameParameter.Guid)).AsValueString(),
-                    ProdRef = type.FindParameter(new Guid(_settingsService.Settings.ProdRefParameter.Guid)).AsValueString(),
-                    ManProdURL = type.FindParameter(new Guid(_settingsService.Settings.ManProdURLParameter.Guid)).AsValueString(),
+                    ChorusManName = GetParameterValueOrEmpty(type, _settingsService.Settings.NBSChorusManName),
+                    ChorusProdRef = GetParameterValueOrEmpty(type, _settingsService.Settings.NBSChorusProdRef),
+                    ChorusManProdURL = GetParameterValueOrEmpty(type, _settingsService.Settings.NBSChorusManProdURL),
+                    ManName = GetParameterValueOrEmpty(type, _settingsService.Settings.ManNameParameter.Guid),
+                    ProdRef = GetParameterValueOrEmpty(type, _settingsService.Settings.ProdRefParameter.Guid),
+                    ManProdURL = GetParameterValueOrEmpty(type, _settingsService.Settings.ManProdURLParameter.Guid),
                 };
 
                 Elements.Add(dataModel);
@@ -138,9 +140,22 @@ internal partial class ParameterSyncViewModel : BaseViewModel
         }
     }
 
+    private string GetParameterValueOrEmpty(Element element, string parameterGuid)
+    {
+        if (!Guid.TryParse(parameterGuid, out var guid))
+        {
+            _logger.LogWarning("Invalid parameter GUID: {parameterGuid}", parameterGuid);
+            return string.Empty;
+        }
+
+        return element.FindParameter(guid)?.AsValueString() ?? string.Empty;
+    }
+
     private void GetMaterialsToSync()
     {
-        var materials = App.RevitDocument.GetInstances(BuiltInCategory.OST_Materials)
+        var materials = App.RevitDocument.CollectElements()
+            .Instances()
+            .OfCategory(BuiltInCategory.OST_Materials)
             .Where(x => x.HasNewChorusParameters(_settingsService.MaterialParameterGuids.Keys.ToList()));
         _logger.LogDebug("Found {count} material(s) with new parameters", materials.Count());
 
