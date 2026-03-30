@@ -7,8 +7,8 @@
 		<FullClassName>SyncNBSParameters.App</FullClassName>
 		<VendorId>ARBG</VendorId>
 	</AddIn>
-	<!--<ManifestSettings>
+	<ManifestSettings>
 		<UseRevitContext>False</UseRevitContext>
 		<ContextName>SyncNBSParams</ContextName>
-	</ManifestSettings>-->
+	</ManifestSettings>
 </RevitAddIns>

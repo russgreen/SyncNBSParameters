@@ -234,7 +234,7 @@ internal class SettingsService : ISettingsService
 
     private List<ElementId> ElementsWithStorage(Schema schema)
     {
-        return App.RevitDocument.GetElements()
+        return App.RevitDocument.CollectElements()
             .WherePasses(new ExtensibleStorageFilter(schema.GUID))
             .Select(q => q.Id)
             .ToList();
@@ -250,7 +250,7 @@ internal class SettingsService : ISettingsService
 
     private DataStorage FindDataStorageElement(Schema schema)
     {
-        var collector = App.RevitDocument.GetElements()
+        var collector = App.RevitDocument.CollectElements()
             .OfClass(typeof(DataStorage))
             .WherePasses(new ExtensibleStorageFilter(schema.GUID));
 
