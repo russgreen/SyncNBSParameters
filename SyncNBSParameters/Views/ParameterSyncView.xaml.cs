@@ -18,13 +18,13 @@ namespace SyncNBSParameters.Views;
 /// </summary>
 public partial class ParameterSyncView : Window
 {
-    private readonly ViewModels.ParameterSyncViewModel _viewModel;
+    private readonly ViewModels.ParameterSyncViewModel _viewModel = null!;
 
     public ParameterSyncView()
     {
         InitializeComponent();
 
-        _viewModel = Host.GetService<ViewModels.ParameterSyncViewModel>(); 
+        _viewModel = Host.GetService<ViewModels.ParameterSyncViewModel>()!; 
         DataContext = _viewModel;
         _viewModel.ClosingRequest += (sender, e) => this.Close();
     }

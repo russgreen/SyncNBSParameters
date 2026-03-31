@@ -9,38 +9,36 @@ using System.ComponentModel.DataAnnotations;
 namespace SyncNBSParameters.ViewModels;
 internal partial class SettingsViewModel : BaseViewModel, IParameterRequester
 {
-    private readonly ISettingsService _settingsService;
-    private readonly ILogger<SettingsViewModel> _logger;
+    private readonly ISettingsService _settingsService = null!;
+    private readonly ILogger<SettingsViewModel> _logger = null!;
 
     [ObservableProperty]
     [Required]
-    private ParameterDataModel _manNameParameter;
+    private ParameterDataModel _manNameParameter = null!;
 
     [ObservableProperty]
     [Required]
-    private ParameterDataModel _prodRefParameter;
+    private ParameterDataModel _prodRefParameter = null!;
 
     [ObservableProperty]
     [Required]
-    private ParameterDataModel _manProdURLParameter;
+    private ParameterDataModel _manProdURLParameter = null!;
 
     [ObservableProperty]
     [Required]
-    private ParameterDataModel _manNameMtrlParameter;
+    private ParameterDataModel _manNameMtrlParameter = null!;
 
     [ObservableProperty]
     [Required]
-    private ParameterDataModel _prodRefMtrlParameter;
+    private ParameterDataModel _prodRefMtrlParameter = null!;
 
     [ObservableProperty]
     [Required]
-    private ParameterDataModel _manProdURLMtrlParameter;
+    private ParameterDataModel _manProdURLMtrlParameter = null!;
 
     public SettingsViewModel()
     {
         // design time constructor
-        _settingsService = null;
-        _logger = null;
     }
 
     public SettingsViewModel(ISettingsService settingsService,

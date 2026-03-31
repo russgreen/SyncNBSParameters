@@ -14,7 +14,7 @@ using System.Globalization;
 namespace SyncNBSParameters;
 internal static class Host
 {
-    private static IHost _host;
+    private static IHost _host = null!;
 
     public static void StartHost()
     {
@@ -98,7 +98,7 @@ internal static class Host
         _host.Dispose();
     }
 
-    public static T GetService<T>() where T : class
+    public static T? GetService<T>() where T : class
     {
         return _host.Services.GetService(typeof(T)) as T;
     }

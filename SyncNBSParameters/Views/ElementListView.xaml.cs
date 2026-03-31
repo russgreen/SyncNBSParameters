@@ -19,7 +19,7 @@ namespace SyncNBSParameters.Views;
 /// </summary>
 public partial class ElementListView : Window
 {
-    private readonly ViewModels.ElementListViewModel _viewModel;
+    private readonly ViewModels.ElementListViewModel _viewModel = null!;
 
     public ElementListView()
     {

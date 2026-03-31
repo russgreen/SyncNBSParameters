@@ -21,15 +21,17 @@ internal partial class ElementListViewModel : BaseViewModel
     {
         foreach (var element in elements)
         {
-            if(element.Category.Name == "Materials")
+            if(element.Category?.Name == "Materials")
             {
                 ElementNames.Add($"Material : {element.Id} : {element.Name}");
                 return;
             }
 
             var familySymbol = element as FamilySymbol;
-
-            ElementNames.Add($"{familySymbol.Category.Name} : {familySymbol.Id} : {familySymbol.FamilyName} : {familySymbol.Name}");
+            if (familySymbol != null)
+            {
+                ElementNames.Add($"{familySymbol.Category.Name} : {familySymbol.Id} : {familySymbol.FamilyName} : {familySymbol.Name}");
+            }
         }
         //ElementNames = new ObservableCollection<string>(elements.Select(e => e.Name));
     }
