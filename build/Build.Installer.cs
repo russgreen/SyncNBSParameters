@@ -7,6 +7,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 partial class Build
 {
@@ -16,7 +17,8 @@ partial class Build
     .Executes(() =>
     {
         var aipProjectPath = Path.Combine(RootDirectory, @"Installer\SyncNBSParameters.aip");
-        var version = Solution.SyncNBSParameters.GetProperty("Version");
+        var version = GetProjectVersion(Path.Combine(RootDirectory, @"SyncNBSParameters\SyncNBSParameters.csproj"));
+
 
         Log.Information("AIP : {aipProjectPath}", aipProjectPath);
         Log.Information("Version : {version}", version);
@@ -27,6 +29,19 @@ partial class Build
 
         SignMSI(version);
     });
+
+    static string GetProjectVersion(string projectFilePath)
+    {
+        var doc = XDocument.Load(projectFilePath);
+        var ns = doc.Root?.Name.NamespaceName;
+
+        // First PropertyGroup usually contains the base Version
+        var versionElement = ns != null
+            ? doc.Descendants(XName.Get("Version", ns)).FirstOrDefault()
+            : doc.Descendants("Version").FirstOrDefault();
+
+        return versionElement?.Value ?? "1.0.0";
+    }
 
     static void SignMSI(string version)
     {
