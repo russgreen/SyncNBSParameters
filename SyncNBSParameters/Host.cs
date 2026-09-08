@@ -20,7 +20,7 @@ internal static class Host
     {
         var logPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "SyncNBSParameters", "Log.json");
         var cultureInfo = Thread.CurrentThread.CurrentCulture;
-        var regionInfo = new RegionInfo(cultureInfo.LCID);
+        var regionInfo = new RegionInfo(cultureInfo.Name);
         var clientId = ClientIdProvider.GetOrCreateClientId();
 
         var loggerConfigSyncNBSParameters = new LoggerConfiguration()
