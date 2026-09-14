@@ -157,22 +157,30 @@ internal partial class ParameterSyncViewModel : BaseViewModel
             .Where(x => x.HasNewChorusParameters(_settingsService.MaterialParameterGuids.Keys.ToList()));
         _logger.LogDebug("Found {count} material(s) with new parameters", materials.Count());
 
+
         foreach (var material in materials)
         {
-            var dataModel = new ElementDataModel
+            try
             {
-                Element = material,
-                CategoryName = material.Category.Name,
-                IsMaterial = true,
-                ChorusManNameMtrl = material.get_Parameter(new Guid(_settingsService.Settings.NBSChorusManName_mtrl)).AsValueString(),
-                ChorusProdRefMtrl = material.get_Parameter(new Guid(_settingsService.Settings.NBSChorusProdRef_mtrl)).AsValueString(),
-                ChorusManProdURLMtrl = material.get_Parameter(new Guid(_settingsService.Settings.NBSChorusManProdURL_mtrl)).AsValueString(),
-                ManNameMtrl = material.get_Parameter(new Guid(_settingsService.Settings.ManNameMtrlParameter.Guid)).AsValueString(),
-                ProdRefMtrl = material.get_Parameter(new Guid(_settingsService.Settings.ProdRefMtrlParameter.Guid)).AsValueString(),
-                ManProdURLMtrl = material.get_Parameter(new Guid(_settingsService.Settings.ManProdURLMtrlParameter.Guid)).AsValueString(),
-            };
+                var dataModel = new ElementDataModel
+                {
+                    Element = material,
+                    CategoryName = material.Category.Name,
+                    IsMaterial = true,
+                    ChorusManNameMtrl = material.get_Parameter(new Guid(_settingsService.Settings.NBSChorusManName_mtrl)).AsValueString(),
+                    ChorusProdRefMtrl = material.get_Parameter(new Guid(_settingsService.Settings.NBSChorusProdRef_mtrl)).AsValueString(),
+                    ChorusManProdURLMtrl = material.get_Parameter(new Guid(_settingsService.Settings.NBSChorusManProdURL_mtrl)).AsValueString(),
+                    ManNameMtrl = material.get_Parameter(new Guid(_settingsService.Settings.ManNameMtrlParameter.Guid)).AsValueString(),
+                    ProdRefMtrl = material.get_Parameter(new Guid(_settingsService.Settings.ProdRefMtrlParameter.Guid)).AsValueString(),
+                    ManProdURLMtrl = material.get_Parameter(new Guid(_settingsService.Settings.ManProdURLMtrlParameter.Guid)).AsValueString(),
+                };
 
-            Elements.Add(dataModel);
+                Elements.Add(dataModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error getting material data for {material} : {ex}", material.Name, ex);
+            }
         }
     }
 
