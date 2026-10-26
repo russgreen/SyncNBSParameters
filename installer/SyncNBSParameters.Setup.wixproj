@@ -1,0 +1,25 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+  <PropertyGroup>
+    <InstallerPlatform>x64</InstallerPlatform>
+    <SourceRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\SyncNBSParameters\'))</SourceRoot>
+    <!-- Read the version from the add-in project unless one is passed in (-p:VersionPrefix=x.y.z) -->
+    <VersionPrefix Condition="'$(VersionPrefix)' == ''">$([System.Text.RegularExpressions.Regex]::Match($([System.IO.File]::ReadAllText('$(SourceRoot)SyncNBSParameters.csproj')), '&lt;Version&gt;([^&lt;]+)&lt;/Version&gt;').Groups[1].Value)</VersionPrefix>
+    <OutputName>SyncNBSParameters.$(VersionPrefix)</OutputName>
+    <OutputPath>$(MSBuildProjectDirectory)\SyncNBSParameters-SetupFiles\</OutputPath>
+    <!-- ICE60: file language warnings for unversioned files -->
+    <SuppressIces>ICE60</SuppressIces>
+    <!-- 1076: ICE61 - same-version upgrades are intentional so rebuilding a version still replaces it. -->
+    <SuppressSpecificWarnings>1076</SuppressSpecificWarnings>
+    <DefineConstants>$(DefineConstants);ProductVersion=$(VersionPrefix);SourceRoot=$(SourceRoot)</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="rg_icon.ico" />
+    <None Include="sync-nbs-parameters_background.png" />
+    <None Include="sync-nbs-parameters_banner.png" />
+  </ItemGroup>
+</Project>

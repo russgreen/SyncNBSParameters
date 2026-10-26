@@ -1,0 +1,116 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <!--
+    Revit releases. To support a new Revit release, add its two digit year to RevitReleases (nothing else here changes).
+    Releases from FirstProgramFilesRelease are installed under Program Files, earlier ones under ProgramData.
+    Releases from FirstIsolatedRelease load the *_Isolated.addin manifest (installed under the normal name).
+  -->
+  <?define RevitReleases="21;22;23;24;25;26;27"?>
+  <?define FirstProgramFilesRelease="27"?>
+  <?define FirstIsolatedRelease="26"?>
+
+  <!--
+    The UpgradeCode MUST remain the same as the Advanced Installer based installers (SyncNBSParameters.aip)
+    so that this package upgrades existing installations. The ProductCode is generated for every build.
+  -->
+  <Package Name="SyncNBSParameters"
+           Manufacturer="Russ Green"
+           Version="$(var.ProductVersion)"
+           UpgradeCode="031669EE-71CF-4284-A2E4-E75CBA0E80B4"
+           Language="1033"
+           Scope="perMachine">
+
+    <SummaryInformation Description="SyncNBSParameters installer" />
+
+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+                  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="rg_icon.ico" SourceFile="rg_icon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="rg_icon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/russgreen/SyncNBSParameters" />
+    <Property Id="ARPCOMMENTS" Value="Sync NBS Chorus additional parameter values into alternative parameters" />
+
+    <!-- Re-use the location of a previous installation (including those made by the Advanced Installer package) -->
+    <Property Id="INSTALLFOLDER">
+      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Russ Green\SyncNBSParameters" Name="Path" Type="directory" Bitness="always64" />
+    </Property>
+
+    <!-- UI -->
+    <WixVariable Id="WixUIBannerBmp" Value="sync-nbs-parameters_banner.png" />
+    <WixVariable Id="WixUIDialogBmp" Value="sync-nbs-parameters_background.png" />
+    <UIRef Id="SyncNBSParametersUI" />
+
+    <!-- Install locations -->
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="RootInstallFolder" Name="Russ Green">
+        <Directory Id="INSTALLFOLDER" Name="SyncNBSParameters" />
+      </Directory>
+
+      <!-- Revit 2027 and later is installed under Program Files -->
+      <Directory Id="PfAutodeskFolder" Name="Autodesk">
+        <Directory Id="PfRevitFolder" Name="Revit">
+          <Directory Id="PfRevitAddinsFolder" Name="Addins">
+            <?foreach Rel in $(var.RevitReleases)?>
+            <?if $(Rel) >= $(var.FirstProgramFilesRelease)?>
+            <Directory Id="Revit20$(Rel)Addins" Name="20$(Rel)">
+              <Directory Id="Revit20$(Rel)App" Name="SyncNBSParameters" />
+            </Directory>
+            <?endif?>
+            <?endforeach?>
+          </Directory>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="CommonAppDataFolder">
+      <Directory Id="AutodeskFolder" Name="Autodesk">
+        <Directory Id="RevitFolder" Name="Revit">
+          <Directory Id="RevitAddinsFolder" Name="Addins">
+            <?foreach Rel in $(var.RevitReleases)?>
+            <?if $(Rel) < $(var.FirstProgramFilesRelease)?>
+            <Directory Id="Revit20$(Rel)Addins" Name="20$(Rel)">
+              <Directory Id="Revit20$(Rel)App" Name="SyncNBSParameters" />
+            </Directory>
+            <?endif?>
+            <?endforeach?>
+          </Directory>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <Feature Id="MainFeature" Title="SyncNBSParameters" Level="1" AllowAbsent="no">
+      <ComponentGroupRef Id="AppRegistry" />
+      <ComponentGroupRef Id="RevitAddins" />
+    </Feature>
+
+    <ComponentGroup Id="AppRegistry" Directory="INSTALLFOLDER">
+      <Component Id="ProductInformation">
+        <RegistryValue Root="HKLM" Key="Software\Russ Green\SyncNBSParameters" Name="Path" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+        <RegistryValue Root="HKLM" Key="Software\Russ Green\SyncNBSParameters" Name="Version" Type="string" Value="[ProductVersion]" />
+        <CreateFolder />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Revit add-ins, one set of files per supported Revit version -->
+    <ComponentGroup Id="RevitAddins">
+      <?foreach Rel in $(var.RevitReleases)?>
+      <ComponentGroupRef Id="Revit20$(Rel)" />
+      <?endforeach?>
+    </ComponentGroup>
+
+    <?foreach Rel in $(var.RevitReleases)?>
+    <ComponentGroup Id="Revit20$(Rel)">
+      <Component Id="Revit20$(Rel)Addin" Directory="Revit20$(Rel)Addins">
+        <?if $(Rel) >= $(var.FirstIsolatedRelease)?>
+        <File Id="Revit20$(Rel)AddinFile" Name="SyncNBSParameters.addin" Source="$(var.SourceRoot)SyncNBSParameters_Isolated.addin" />
+        <?else?>
+        <File Id="Revit20$(Rel)AddinFile" Name="SyncNBSParameters.addin" Source="$(var.SourceRoot)SyncNBSParameters.addin" />
+        <?endif?>
+      </Component>
+      <Files Include="$(var.SourceRoot)bin\Release R$(Rel)\**" Directory="Revit20$(Rel)App" />
+    </ComponentGroup>
+    <?endforeach?>
+  </Package>
+</Wix>

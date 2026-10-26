@@ -38,7 +38,10 @@
     <BuildType Solution="Release R25|*" Project="Release" />
     <BuildType Solution="Release R26|*" Project="Release" />
     <BuildType Solution="Release R27|*" Project="Release" />
-    <Build Solution="*|x64" Project="false" />
+    <Build Project="false" />
+  </Project>
+  <Project Path="installer/SyncNBSParameters.Setup.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
+    <Build Project="false" />
   </Project>
   <Project Path="SyncNBSParameters/SyncNBSParameters.csproj">
     <BuildType Solution="Debug R26|x64" Project="Debug R25" />
